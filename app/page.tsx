@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { Building2, HandCoins, TrendingUp, Bot, ArrowRight, FileDown } from 'lucide-react';
 import { MetricCard, SkillCard } from '@/components';
+import { HeroPortrait } from '@/components/HeroPortrait';
 
 const metrics = [
   { number: '$200M+', label: 'Portfolio Processed' },
@@ -107,16 +107,7 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="rounded-lg overflow-hidden bg-white p-3 max-w-md lg:ml-auto">
-              <Image
-                src="/images/joydeep.png"
-                alt="Joydeep Sarkar"
-                width={520}
-                height={640}
-                className="w-full h-auto rounded-md object-cover"
-                priority
-              />
-            </div>
+            <HeroPortrait />
           </div>
         </div>
       </section>
