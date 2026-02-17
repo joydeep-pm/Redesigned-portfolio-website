@@ -1,0 +1,131 @@
+---
+title: "The Architect's Journey: Milestone & Perk Tracker"
+description: "Secure, Local-First Fintech Android App + Marketing Website for Credit Card Optimization"
+status: completed
+tech: ["React Native", "Expo", "SQLite", "Cursor", "Claude Code", "Lovable", "React 19", "Vite", "Three.js", "Framer Motion"]
+demoUrl: https://optimizer-website-seven.vercel.app/
+repoUrl: https://github.com/joydeep-pm/optimizer-website
+featured: true
+order: 3
+thumbnail: /images/projects/milestone-perk-tracker.png
+---
+
+## 🔍 The Problem
+
+**"Perk Blindness" and "Optimization Fatigue"** plague the Indian credit card ecosystem.
+
+With 12+ premium cards (Infinia, Magnus, Reserve, etc.) each offering different reward structures, milestone bonuses, and merchant-specific accelerators, it's impossible to know which card to swipe for any given transaction.
+
+The result: thousands of rupees in unrealized rewards, missed milestone bonuses, and decision fatigue at checkout.
+
+## 💡 The Solution
+
+A fully local, privacy-first Android app that:
+- Tracks spend progress toward 1L/2L/5L milestone bonuses
+- Recommends the optimal card for any transaction in under 200ms
+- Stores everything on-device with zero cloud dependency
+
+## 🛠️ The 6-Phase Build Journey
+
+### 🎨 Phase 1: The "Vibe" (Lovable)
+**Goal:** Rapidly prototype UI/UX and visual language
+
+- Fed Lovable a high-level vision of a premium Fintech dashboard
+- Focused on progress bars for milestone tracking, card-stack wallet views
+- Built a "Top Pick" transaction recommender component
+
+**Outcome:** High-fidelity React frontend matching top-tier Indian banking apps (CRED, Fold aesthetic)
+
+### 📦 Phase 2: The Handover (GitHub)
+**Goal:** Professional development environment setup
+
+- Exported raw React code from Lovable to private GitHub repository
+- Converted "Vibe" prototype into a local codebase
+- Enabled transition to heavy-duty engineering
+
+### 🧠 Phase 3: The Brain & Security (Cursor)
+**Goal:** Implement logic, database, and encryption
+
+**Database Engineering:**
+- Built Expo-SQLite foundation with `lib/db.ts`
+- Created schema for `card_offers` and `user_spend` tables
+- Implemented local seeding for 12+ premium Indian cards
+
+**The Search Algorithm (`lib/search.ts`):**
+- Natural language query handling
+- The Zomato Case: "Zomato" or "Swiggy" correctly weights cards like HDFC Infinia or Axis Airtel based on ERR
+- Custom Effective Reward Rate (ERR) algorithm
+
+**Privacy Architecture:**
+- Wired `SQLiteProvider` into root `_layout.tsx`
+- Zero-cloud dependency—all data stays on device
+
+### 🎛️ Phase 4: The Orchestration (Warp + Claude Code)
+**Goal:** Managing technical debt and large-scale refactors
+
+- **Warp Terminal:** Command center with AI-assisted build commands
+- **Claude Code Integration:** When Cursor hit limits, switched to Claude Code
+  - Refactored "spaghetti code" from Lovable export into modular components
+  - Automated terminal-based Android build process (`eas build`)
+
+### 🚀 Phase 5: The Deployment (Android APK)
+**Goal:** Complete Plan → Build → Deploy lifecycle
+
+- Delivered fully functional, local-first Android APK
+- Sub-200ms transaction recommendations
+- Zero privacy compromise
+
+### 🌐 Phase 6: The Marketing Website (React 19 + Three.js)
+**Goal:** Build a premium marketing site to showcase the app
+
+- **React 19 + Vite:** Modern SPA with blazing-fast HMR and build times
+- **Three.js 3D Card Carousel:** Interactive rotating credit card models as the hero section
+- **Framer Motion:** Scroll-triggered animations, page transitions, and micro-interactions
+- **Lenis Smooth Scroll:** Buttery smooth scrolling experience across all sections
+- **Waitlist Form:** Email capture with validation for early access signups
+- **Responsive Design:** Pixel-perfect across mobile, tablet, and desktop
+
+**Outcome:** A visually striking landing page that matches the premium feel of the app itself—deployed on Vercel at [optimizer-website-seven.vercel.app](https://optimizer-website-seven.vercel.app/)
+
+![Card Optimizer — Hero section with 3D card visuals and waitlist signup](/images/projects/card-optimizer/hero.png)
+
+![Card Optimizer — How it Works: visual flow from spend intent to route decision](/images/projects/card-optimizer/how-it-works.png)
+
+## 📊 Technical Architecture
+
+| Layer | Technology |
+|:------|:-----------|
+| 📱 Mobile App | React Native / Expo |
+| 💾 Storage | SQLite (Local-First) |
+| 🔐 Security | SQLCipher-ready, Biometric Auth hooks |
+| ⚡ Logic | Custom ERR Algorithm |
+| 🌐 Marketing Website | React 19, Vite, Three.js, Framer Motion, Lenis |
+| 🔧 Dev Pipeline | Lovable → GitHub → Cursor → Warp → Claude Code |
+
+## 🎯 Key Features
+
+- 📈 **Milestone Tracking:** Visual progress toward 1L/2L/5L spend bonuses
+- 🔍 **Smart Recommendations:** "Which card for Zomato?" → Instant answer
+- 💳 **Card Wallet View:** Premium card-stack UI for 12+ cards
+- 📴 **Offline-First:** Works without internet, no data leaves device
+- 🇮🇳 **Indian Card Database:** Infinia, Magnus, Reserve, Airtel, and more
+
+## 🎯 Why This Matters: Vibe Coding → Systems Engineering
+
+This project demonstrates the **"Vibe Coding" to "Systems PM" pipeline**:
+
+1. 🤖 **AI-Native Development:** Leveraging Lovable, Cursor, and Claude Code as force multipliers
+2. 🏗️ **Technical Architecture:** Designing local-first data systems with encryption-ready foundations
+3. 🔄 **End-to-End Ownership:** From UI prototyping to database schema to Android deployment
+4. 🔒 **Privacy Engineering:** Building Fintech without compromising user data
+
+> "By utilizing AI-native tools, I managed the end-to-end lifecycle of a secure Fintech app—from UI prototyping to local database architecture and final Android deployment."
+
+## 🔧 Stack
+
+- **React Native / Expo:** Cross-platform mobile framework
+- **SQLite:** Local-first persistent storage
+- **Lovable:** AI-powered UI prototyping
+- **Cursor:** AI-assisted code development
+- **Claude Code:** Large-scale refactoring and automation
+- **Warp Terminal:** Modern terminal for build orchestration

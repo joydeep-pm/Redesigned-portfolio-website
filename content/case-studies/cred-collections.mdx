@@ -1,0 +1,45 @@
+---
+title: E2E Collections Product Suite
+company: CRED
+problem: "Build end-to-end collection product suite for PL, CC, and BNPL segments"
+tags: ["Lending", "System Design"]
+gradient: "blue"
+thumbnail: "/images/case-studies/collections.png"
+featured: true
+publishedAt: 2024-01-15
+readingTime: 12
+---
+
+## Challenge
+
+CRED needed comprehensive collections infrastructure for Personal Loans, Credit Cards, and BNPL. The goal was a unified system handling different collection scenarios while maintaining excellent UX.
+
+## The 4 A's Framework
+
+1. **Acquire** - Debt portfolio acquisition and management
+2. **Analyze** - Customer segmentation and risk profiling
+3. **Act** - Multi-channel engagement strategies
+4. **Assess** - Performance monitoring and optimization
+
+## Solution Architecture
+
+### Core Modules
+- **Debt Management Engine:** Portfolio ingestion, automated aging, real-time sync
+- **Customer Intelligence:** Behavioral segmentation, propensity-to-pay scoring
+- **Engagement Orchestrator:** Omnichannel (SMS, Push, WhatsApp, IVR, Email)
+- **Settlement & Resolution:** Flexible payment plans, dispute management
+
+### Build vs Buy Analysis
+
+| Component | Decision | Rationale |
+|-----------|----------|-----------|
+| Collections Engine | Build | Competitive differentiator |
+| Communication Gateway | Buy + Customize | Gupshup/Kaleyra APIs |
+| Payment Processing | Leverage Existing | CRED infrastructure |
+| Analytics Layer | Build | Proprietary insights |
+
+## Projected Impact
+
+- 85%+ collection efficiency
+- 40% reduction in manual interventions
+- 3x improvement in customer response rates

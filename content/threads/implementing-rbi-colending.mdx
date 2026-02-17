@@ -1,0 +1,57 @@
+---
+title: "Implementing RBI's Co-lending Directions"
+excerpt: "A technical deep-dive into building co-lending systems that comply with RBI's regulatory framework"
+tags: ["Co-lending", "RBI", "Technical"]
+publishedAt: 2025-04-20
+readingTime: 8
+featured: true
+draft: false
+externalUrl: "https://www.linkedin.com/posts/joydeepsarkar1987_implementing-rbis-colending-directions-activity-7365090123878756353-RMIE"
+---
+
+Co-lending is one of the most significant regulatory innovations in Indian lending. Here's how to build systems that work.
+
+## Understanding Co-lending
+
+RBI's co-lending model allows banks and NBFCs to jointly originate loans:
+- **Bank share:** Minimum 20% of the loan
+- **NBFC share:** Maximum 80% of the loan
+- **Risk sharing:** Proportional to contribution
+
+## Technical Architecture Considerations
+
+### 1. Loan Origination
+- Single application, dual underwriting
+- Unified customer experience
+- Split disbursement handling
+
+### 2. Servicing Complexity
+- Single EMI collection
+- Proportional distribution
+- Unified customer communication
+
+### 3. Default Management
+- NPA recognition alignment
+- Collection coordination
+- Recovery sharing
+
+## Key Implementation Challenges
+
+1. **Data synchronization** between bank and NBFC systems
+2. **Reconciliation** of daily transactions
+3. **Regulatory reporting** for both entities
+4. **Customer service** coordination
+
+## Our Approach at M2P
+
+We built the co-lending orchestration module to handle:
+- Real-time loan allocation
+- Automated compliance checks
+- Unified servicing layer
+- Transparent reporting
+
+## Results
+
+- 5 enterprise accounts onboarded
+- $50M+ loan volume processed
+- Zero compliance issues

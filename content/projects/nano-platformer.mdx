@@ -1,0 +1,103 @@
+---
+title: Nano Platformer
+description: "A 12-Stage 2D Platformer Game with Upgrades, Boss Fights & Adaptive Difficulty"
+status: completed
+tech: ["Python", "Pygame", "JSON", "Sprite Animation"]
+featured: true
+order: 5
+thumbnail: /images/projects/nano-platformer.png
+---
+
+## 🔍 The Problem
+
+Wanted to build a **complete game from scratch**—not a tutorial clone, but a fully-featured platformer with real game design: progression systems, enemy AI, boss fights, and player-driven difficulty.
+
+The goal was to learn game development fundamentals by shipping something end-to-end: physics, state machines, animation, game balance, and persistence.
+
+## 💡 The Solution
+
+A 12-stage 2D platformer with a full campaign arc: escalating enemy types, a shop/upgrade system, a multi-phase boss fight, and an adaptive assist system that adjusts difficulty based on player performance.
+
+Built entirely in Python with Pygame—no game engine, no shortcuts.
+
+![Nano Platformer — Canyon Steps gameplay with platforms, enemies, and collectibles](/images/projects/nano-platformer/gameplay.png)
+
+## 🛠️ Technical Implementation
+
+### ⚙️ Physics Engine
+- Custom gravity and acceleration system with configurable constants
+- AABB collision detection for platforms, walls, and entities
+- Jump mechanics with variable height (tap vs hold) for precise control
+- Friction and air resistance for natural-feeling movement
+
+### 👾 Enemy AI System
+- **Walkers:** Patrol paths with edge detection and turn behavior
+- **Shooters:** Ranged enemies with projectile spawning and cooldown timers
+- **Boss:** Multi-phase fight with burst-fire patterns, health thresholds, and enrage mechanics
+- State machine architecture for clean AI behavior transitions
+
+### 🛒 Upgrade System
+- **Vitality:** Max HP increases and passive health regen
+- **Blade:** Damage multiplier and attack range extensions
+- **Tempo:** Movement speed and jump height boosts
+- 3 tiers per upgrade path, purchased with in-game currency from defeated enemies
+
+### 🎚️ Adaptive Difficulty
+- Tracks player deaths per stage and cumulative performance
+- Activates assist mode after repeated failures: extra HP, damage reduction, extended checkpoints
+- Scales back assistance when player improves—never feels patronizing
+
+### 📁 JSON-Based Level System
+- Each stage defined as a JSON file: platforms, enemy spawns, collectibles, and triggers
+- Hot-reloadable during development for rapid level design iteration
+- Supports custom tilesets and background layers per stage
+
+### 💾 Persistent Save System
+- Player progress, upgrades, and currency saved to local JSON
+- Checkpoint system within stages for respawn on death
+- Full campaign state preserved across sessions
+
+### 🗺️ Campaign & Boss Fights
+
+<div style={{display: 'flex', gap: '1rem', justifyContent: 'center', margin: '2rem 0'}}>
+  <img src="/images/projects/nano-platformer/campaign-map.png" alt="12-stage campaign map with progression system" style={{width: '48%', borderRadius: '0.75rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/nano-platformer/boss-fight.png" alt="Vine Colossus boss fight with burst-fire projectiles" style={{width: '48%', borderRadius: '0.75rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+</div>
+
+## 🎯 Key Features
+
+- 🎮 **12-Level Campaign:** Progressive difficulty from tutorial to boss fight
+- 👾 **3 Enemy Types + Boss:** Walkers, shooters, and a multi-phase boss encounter
+- 🛒 **Shop & Upgrades:** 3 upgrade paths (Vitality/Blade/Tempo) with 3 tiers each
+- 🎚️ **Adaptive Assist:** Dynamic difficulty adjustment based on player performance
+- ✅ **Checkpoint/Respawn:** Mid-stage checkpoints with instant respawn
+- 🎨 **Sprite Animation:** AI-generated character and environment assets with frame-by-frame animation
+- 💾 **Persistent Save:** Full progress saved across sessions
+
+## 📊 Technical Highlights
+
+| Metric | Detail |
+|:-------|:-------|
+| 🎮 Campaign Stages | **12** |
+| 👾 Enemy Types | **3 + Boss** (Walker, Shooter, Boss) |
+| 🛒 Upgrade Paths | **3** (Vitality, Blade, Tempo) |
+| 🎚️ Upgrade Tiers | **3 per path** (9 total) |
+| 💾 Save Format | **JSON** (portable, human-readable) |
+| 🖼️ Art Pipeline | **AI-generated** sprites + manual cleanup |
+
+## 🎯 Why This Matters
+
+This project demonstrates:
+
+- ⚙️ **Game Physics:** Custom gravity, collision detection, and movement systems from scratch
+- 🤖 **State Machines:** Clean enemy AI architecture with behavior transitions
+- ⚖️ **Game Balance:** Upgrade pricing, enemy scaling, and adaptive difficulty tuning
+- 🎨 **AI Art Pipeline:** Generating game assets with AI tools and integrating into sprite sheets
+- 🏗️ **Systems Design:** Interconnected systems (combat, economy, progression) working together
+
+## 🔧 Stack
+
+- **Python:** Core game logic and systems
+- **Pygame:** Rendering, input handling, and game loop
+- **JSON:** Level definitions, save data, and configuration
+- **Sprite Animation:** Frame-by-frame animation with AI-generated assets

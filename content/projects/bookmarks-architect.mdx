@@ -1,0 +1,67 @@
+---
+title: X Bookmarks Architect
+description: "Automating a Knowledge Ingestion Engine for a PM's Second Brain"
+status: completed
+tech: ["Playwright", "Python", "Notion API", "MCP", "Warp Terminal"]
+repoUrl: https://github.com/joydeepsarkar/x-harvester
+featured: true
+order: 0
+thumbnail: /images/projects/bookmarks-architect.png
+---
+
+## 🔍 The Problem
+
+PMs in Fintech and AI face a growing "black hole" of bookmarks on X—thousands of saved posts that remain unsorted, disconnected from workflows, and effectively useless for knowledge retrieval.
+
+I had **2,000+ bookmarks** accumulated over years. Finding anything meant endless scrolling. The knowledge was there, but completely inaccessible.
+
+## 💡 The Solution
+
+Built an end-to-end data pipeline to extract, process, and ingest all bookmarks into a structured Notion "Second Brain" with **zero manual effort**.
+
+## 🛠️ Implementation Steps
+
+### 🔐 Authentication & Harvesting (Playwright)
+- Automated browser session with cookie-based authentication
+- Handled X's anti-bot measures with realistic interaction patterns
+- Session persistence for reliable multi-hour extractions
+
+### 📜 Infinite Scroll Engineering
+- Custom scroll algorithm to handle X's lazy-loading
+- Implemented backoff strategies to avoid rate limits
+- Checkpoint system to resume interrupted sessions
+
+### ⚡ Zero-Token Sync Engine
+- Direct Notion API integration via MCP (Model Context Protocol)
+- Structured data mapping: URL, text, author, timestamp, categories
+- 95% reduction in API costs vs standard AI processing approaches
+
+### 🎯 Algorithmic Noise Filtering
+- Rule-based filtering to exclude sports, memes, and off-topic content
+- Category auto-assignment based on content patterns
+- Priority scoring for fintech/AI/product content
+
+## 📊 Technical Highlights
+
+| Metric | Result |
+|:-------|:-------|
+| 📦 Items Migrated | **2,000+** |
+| 💰 API Cost Reduction | **95%** vs AI-based approaches |
+| 🤖 Manual Effort | **Zero** post-setup |
+| ✅ Success Rate | **99.2%** |
+
+## 🎯 Why This Matters for PMs
+
+This project demonstrates:
+
+- 💻 **Technical Literacy:** Writing production code, not just specs
+- 📈 **Scalable Workflows:** Building systems that compound over time
+- 🔗 **Tool Integration:** Connecting disparate tools into cohesive pipelines
+- 🧩 **Problem-Solution Fit:** Identifying personal pain points and engineering solutions
+
+## 🔧 Stack
+
+- **Playwright (Python):** Browser automation and scraping
+- **Warp Terminal:** Modern terminal for development
+- **Notion API + MCP:** Structured knowledge base integration
+- **Python 3.x:** Core scripting and data processing
