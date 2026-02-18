@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { Menu, X, Linkedin } from 'lucide-react';
+import { ThemeMenu } from './ThemeMenu';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -51,6 +52,7 @@ export function Nav() {
           >
             <Linkedin size={18} strokeWidth={2.5} />
           </a>
+          <ThemeMenu />
         </div>
 
         <button
@@ -86,6 +88,9 @@ export function Nav() {
           >
             <Linkedin size={16} strokeWidth={2.5} /> LinkedIn
           </a>
+          <div className="pt-1">
+            <ThemeMenu />
+          </div>
         </div>
       )}
     </nav>
