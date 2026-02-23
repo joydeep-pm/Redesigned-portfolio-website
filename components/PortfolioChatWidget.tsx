@@ -6,7 +6,6 @@ import { ChatLauncher } from './ChatLauncher';
 import { ChatPanel, type UiChatMessage } from './ChatPanel';
 import type { ChatResponseBody } from '@/lib/rag/types';
 
-const AUTO_OPEN_KEY = 'portfolio-chat-auto-opened-v1';
 const SESSION_PULSE_KEY = 'portfolio-chat-pulsed-v1';
 
 const defaultPrompts = [
@@ -33,16 +32,6 @@ export function PortfolioChatWidget() {
   const [suggestedPrompts, setSuggestedPrompts] = useState<string[]>(defaultPrompts);
 
   useEffect(() => {
-    const autoOpened = window.localStorage.getItem(AUTO_OPEN_KEY) === '1';
-
-    if (!autoOpened) {
-      const delay = window.setTimeout(() => {
-        setOpen(true);
-        window.localStorage.setItem(AUTO_OPEN_KEY, '1');
-      }, 900);
-      return () => window.clearTimeout(delay);
-    }
-
     const pulsed = window.sessionStorage.getItem(SESSION_PULSE_KEY) === '1';
     if (!pulsed) {
       setShouldPulse(true);
