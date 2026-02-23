@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { PortfolioChatWidget } from '@/components/PortfolioChatWidget';
 import '@fontsource/outfit/index.css';
 import './globals.css';
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           <main className="pt-16">{children}</main>
           <Footer />
+          <PortfolioChatWidget />
         </ThemeProvider>
       </body>
     </html>
