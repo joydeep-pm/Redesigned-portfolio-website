@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { ChatLauncher } from './ChatLauncher';
 import { ChatPanel, type UiChatMessage } from './ChatPanel';
@@ -96,6 +96,20 @@ export function PortfolioChatWidget() {
     },
     [input, loading, messages, pathname]
   );
+
+  const sendRef = useRef(sendMessage);
+  useEffect(() => {
+    sendRef.current = sendMessage;
+  }, [sendMessage]);
+
+  useEffect(() => {
+    const onAsk = (event: Event) => {
+      const prompt = (event as CustomEvent<string>).detail;
+      if (typeof prompt === 'string' && prompt.trim()) void sendRef.current(prompt);
+    };
+    window.addEventListener('portfolio-chat:ask', onAsk);
+    return () => window.removeEventListener('portfolio-chat:ask', onAsk);
+  }, []);
 
   const promptList = useMemo(() => suggestedPrompts.slice(0, 6), [suggestedPrompts]);
 
