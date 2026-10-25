@@ -73,6 +73,12 @@ export default function ProjectsPage() {
                   <p className="text-text-secondary mb-4">{project.description}</p>
                   <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">Why I built it</p>
                   <p className="text-text-secondary leading-relaxed mb-5">{problemSummary(project.content)}</p>
+                  {project.learned && (
+                    <>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">What I learned</p>
+                      <p className="text-text-secondary leading-relaxed mb-5">{project.learned}</p>
+                    </>
+                  )}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.slice(0, 5).map((tech) => (
                       <span

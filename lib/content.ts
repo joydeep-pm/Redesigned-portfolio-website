@@ -43,6 +43,7 @@ export interface Project {
   demoUrl?: string;
   repoUrl?: string;
   thumbnail?: string;
+  learned?: string;
   featured: boolean;
   order: number;
   content: string;
@@ -140,6 +141,7 @@ export function getAllProjects(): Project[] {
       demoUrl: data.demoUrl,
       repoUrl: data.repoUrl,
       thumbnail: data.thumbnail,
+      learned: data.learned,
       featured: data.featured || false,
       order: data.order || 99,
       content,
