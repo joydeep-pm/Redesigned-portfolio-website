@@ -1,6 +1,13 @@
 import { getAllWork } from '@/lib/content';
 import { TimelineEntry } from '@/components';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Work',
+  description: 'Product leadership across lending, payments and card infrastructure.',
+  alternates: { canonical: '/work' },
+};
 
 export default function WorkPage() {
   const works = getAllWork();

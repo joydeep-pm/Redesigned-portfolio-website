@@ -2,18 +2,40 @@ import { getAllCaseStudies, getCaseStudyBySlug } from '@/lib/content';
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
+import type { Metadata } from 'next';
 
 const mdxComponents = {
-  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img {...props} alt={props.alt || ''} className="w-full h-auto object-contain rounded-lg my-6" />
-  ),
+  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) =>
+    typeof props.src === 'string' ? (
+      <Image
+        src={props.src}
+        alt={props.alt || ''}
+        width={1600}
+        height={900}
+        sizes="(min-width: 896px) 896px, 100vw"
+        className="w-full h-auto object-contain rounded-lg my-6"
+      />
+    ) : null,
 };
 
 export async function generateStaticParams() {
   const caseStudies = getAllCaseStudies();
   return caseStudies.map((cs) => ({ slug: cs.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const cs = getCaseStudyBySlug(slug);
+  if (!cs) return {};
+  const title = `${cs.title} | ${cs.company}`;
+  return {
+    title,
+    description: cs.problem,
+    alternates: { canonical: `/case-studies/${slug}` },
+    openGraph: { title, description: cs.problem, type: 'article', url: `/case-studies/${slug}` },
+  };
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {

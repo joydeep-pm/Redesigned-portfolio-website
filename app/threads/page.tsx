@@ -1,5 +1,12 @@
 import { getAllThreads } from '@/lib/content';
 import { ExternalLink, Clock } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Threads',
+  description: 'Writing on Indian lending, co-lending and fintech product.',
+  alternates: { canonical: '/threads' },
+};
 
 export default function ThreadsPage() {
   const threads = getAllThreads();

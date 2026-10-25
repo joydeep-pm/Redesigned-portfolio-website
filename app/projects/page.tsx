@@ -1,6 +1,13 @@
 import { getAllProjects } from '@/lib/content';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Side projects and experiments in AI and fintech tooling.',
+  alternates: { canonical: '/projects' },
+};
 
 const statusTone: Record<string, string> = {
   active: 'bg-emerald-500 text-white',

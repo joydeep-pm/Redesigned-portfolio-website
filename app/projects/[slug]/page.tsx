@@ -4,10 +4,23 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import remarkGfm from 'remark-gfm';
+import type { Metadata } from 'next';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.description,
+    alternates: { canonical: `/projects/${slug}` },
+    openGraph: { title: project.title, description: project.description, url: `/projects/${slug}` },
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {

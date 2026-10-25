@@ -1,6 +1,13 @@
 import { getAllCaseStudies } from '@/lib/content';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Case Studies',
+  description: 'Fintech product case studies: problem, approach and outcomes.',
+  alternates: { canonical: '/case-studies' },
+};
 
 const colorClasses: Record<string, string> = {
   blue: 'bg-blue-100',
