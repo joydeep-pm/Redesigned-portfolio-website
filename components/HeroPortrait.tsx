@@ -93,7 +93,7 @@ export function HeroPortrait() {
         <motion.div style={{ x: frameOffsetX, y: frameOffsetY }} className="relative overflow-hidden rounded-md aspect-[4/5] bg-[#d1d5db]">
           <motion.div style={{ x: imageOffsetX, y: imageOffsetY }} className="absolute inset-0">
             <Image
-              src="/images/joydeep.png"
+              src="/images/joydeep.webp"
               alt="Joydeep Sarkar"
               fill
               className="object-cover"
