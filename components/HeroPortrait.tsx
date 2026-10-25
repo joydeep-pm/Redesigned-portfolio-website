@@ -106,7 +106,7 @@ export function HeroPortrait() {
           <div ref={sweepRef} className="absolute inset-y-0 w-12 bg-white/20 pointer-events-none" />
 
           <div className="absolute left-4 right-4 bottom-4 text-white">
-            <p className="text-[10px] uppercase tracking-[0.18em] text-white/80 mb-1">Director of Product</p>
+            <p className="text-[10px] uppercase tracking-[0.18em] text-white/80 mb-1">Senior Director of Product</p>
             <p className="text-lg font-semibold tracking-tight">Joydeep Sarkar</p>
             <p className="text-xs text-white/80">Lending Infrastructure • Fintech Strategy</p>
           </div>

@@ -84,7 +84,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center relative">
           <div className="lg:col-span-7">
             <p className="text-xs md:text-sm font-semibold uppercase tracking-wider text-white/85 mb-4">
-              Director, Core Lending Suite · M2P Fintech
+              Senior Director, Core Lending Suite · M2P Fintech
             </p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-6">
               Joydeep Sarkar

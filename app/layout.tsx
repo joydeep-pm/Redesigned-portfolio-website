@@ -32,7 +32,7 @@ const personJsonLd = {
   '@type': 'Person',
   name: SITE_NAME,
   url: SITE_URL,
-  jobTitle: 'Director of Product',
+  jobTitle: 'Senior Director of Product',
   worksFor: { '@type': 'Organization', name: 'M2P Fintech' },
   description: SITE_DESCRIPTION,
   sameAs: SAME_AS,
