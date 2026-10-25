@@ -25,6 +25,7 @@ export function CaseStudyCard({ title, company, problem, tags, slug, gradient = 
         <span className="text-3xl font-extrabold tracking-tight text-text-primary/40 text-center px-4">{company}</span>
       </div>
 
+      <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-3">Independent product teardown</p>
       <div className="flex gap-2 mb-3 flex-wrap">
         {tags.slice(0, 2).map((tag) => (
           <span key={tag} className="text-xs px-3 py-1 bg-bg-muted text-text-muted rounded-full uppercase tracking-wider font-semibold">

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Case Studies',
-  description: 'Fintech product case studies: problem, approach and outcomes.',
+  description: 'Independent fintech product teardowns: problem and approach.',
   alternates: { canonical: '/case-studies' },
 };
 
@@ -29,7 +29,7 @@ export default function CaseStudiesPage() {
         <div className="max-w-7xl mx-auto relative">
           <p className="text-xs font-semibold uppercase tracking-wider text-text-primary/75 mb-3">Deep Dives</p>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] text-text-primary mb-4">Case Studies</h1>
-          <p className="text-lg md:text-xl text-text-primary/85 max-w-3xl">Execution stories from lending, payments, neobank products, and conversion-led growth work.</p>
+          <p className="text-lg md:text-xl text-text-primary/85 max-w-3xl">Product teardowns across lending, payments, neobanking, and conversion-led growth.</p>
         </div>
       </section>
 
@@ -58,6 +58,7 @@ export default function CaseStudiesPage() {
                 )}
               </div>
 
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-3">Independent product teardown</p>
               <div className="flex gap-2 mb-3 flex-wrap">
                 {cs.tags.slice(0, 3).map((tag) => (
                   <span
