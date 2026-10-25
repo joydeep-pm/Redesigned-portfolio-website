@@ -1,6 +1,7 @@
 import { getAllThreads } from '@/lib/content';
 import { ExternalLink, Clock } from 'lucide-react';
 import type { Metadata } from 'next';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Threads',
@@ -11,8 +12,29 @@ export const metadata: Metadata = {
 export default function ThreadsPage() {
   const threads = getAllThreads();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: threads.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Article',
+        headline: t.title,
+        description: t.excerpt,
+        datePublished: t.publishedAt,
+        url: t.externalUrl,
+        author: { '@type': 'Person', name: SITE_NAME, url: SITE_URL },
+      },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
       <section className="bg-bg-dark text-white px-6 py-14 md:py-20">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-wider text-white/70 mb-3">Writing</p>
