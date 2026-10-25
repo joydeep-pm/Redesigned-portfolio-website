@@ -33,10 +33,10 @@ export function TimelineEntry({
 
   return (
     <div className="relative pl-8 pb-8">
-      {!isLast && <div className="absolute left-[11px] top-4 bottom-0 w-0.5 bg-border-default" />}
-      <div className={`absolute left-0 top-1 h-6 w-6 rounded-full ${current ? 'bg-accent-secondary' : 'bg-accent-primary'}`} />
+      {!isLast && <div className="absolute left-[11px] top-4 bottom-0 w-[3px] bg-ink" />}
+      <div className={`absolute left-0 top-1 h-6 w-6 rounded-full ${current ? 'bg-sun border-[3px] border-ink' : 'bg-mint border-[3px] border-ink'}`} />
 
-      <div className="rounded-lg bg-white p-6 border-2 border-border-default">
+      <div className="pop-card p-6">
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex items-start gap-3">
             {logo && (
@@ -55,7 +55,7 @@ export function TimelineEntry({
               <div className="flex items-center gap-2 flex-wrap">
                 <h3 className="text-xl font-extrabold tracking-tight text-text-primary">{company}</h3>
                 {current && (
-                  <span className="text-xs px-2 py-1 rounded-md bg-accent-secondary text-white font-semibold uppercase tracking-wider">
+                  <span className="text-xs px-2 py-1 rounded-md border-2 border-ink bg-sun text-ink font-bold uppercase tracking-wider">
                     Current
                   </span>
                 )}

@@ -35,25 +35,23 @@ export default function ThreadsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
-      <section className="bg-bg-dark text-white px-6 py-14 md:py-20">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-wider text-white/70 mb-3">Writing</p>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-4">Threads</h1>
-          <p className="text-lg md:text-xl text-white/80 max-w-3xl">Thoughts on product strategy, fintech regulation, and technical learnings.</p>
-        </div>
+      <section className="max-w-6xl mx-auto px-5 pt-12 pb-4">
+        <p className="eyebrow mb-3">Writing</p>
+        <h1 className="page-title text-5xl md:text-7xl mb-4">Things I wrote</h1>
+        <p className="text-lg md:text-xl max-w-3xl text-text-secondary">Thoughts on product strategy, fintech regulation, and technical learnings.</p>
       </section>
 
-      <section className="bg-bg-muted px-6 py-12 md:py-16">
+      <section className="px-5 py-8">
         <div className="max-w-4xl mx-auto">
           {threads.length === 0 ? (
-            <div className="rounded-lg bg-white p-10 border-2 border-border-default text-center">
+            <div className="pop-card p-10 text-center">
               <p className="text-lg text-text-secondary mb-2">I&apos;m preparing new pieces on digital lending regulation and co-lending orchestration.</p>
               <p className="text-text-muted">More writing will be published soon.</p>
             </div>
           ) : (
             <div className="space-y-5">
               {threads.map((thread) => (
-                <article key={thread.slug} className="rounded-lg bg-white p-7 border-2 border-border-default transition-all duration-200 hover:scale-[1.01]">
+                <article key={thread.slug} className="pop-card p-7 transition-transform duration-150 hover:-translate-y-1">
                   <div className="flex gap-2 mb-4 flex-wrap">
                     {thread.tags.map((tag) => (
                       <span
@@ -86,7 +84,7 @@ export default function ThreadsPage() {
                         href={thread.externalUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="h-11 px-4 rounded-md bg-accent-primary text-white hover:bg-blue-600 transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider"
+                        className="h-11 px-4 rounded-md bg-accent-primary text-white hover:bg-sun hover:text-ink transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider"
                       >
                         Read on LinkedIn <ExternalLink size={14} strokeWidth={2.5} />
                       </a>

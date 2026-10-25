@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const statusTone: Record<string, string> = {
-  active: 'bg-emerald-500 text-white',
-  completed: 'bg-blue-500 text-white',
-  experimental: 'bg-amber-500 text-white',
-  archived: 'bg-gray-500 text-white',
+  active: 'bg-mint border-2 border-ink text-ink',
+  completed: 'bg-sky border-2 border-ink text-ink',
+  experimental: 'bg-sun border-2 border-ink text-ink',
+  archived: 'bg-white border-2 border-ink text-ink',
 };
 
 const FLAGSHIP_SLUGS = ['voice-journal', 'milestone-perk-tracker'];
@@ -39,18 +39,14 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-accent-secondary text-white px-6 py-14 md:py-20">
-        <div className="poster-shape-circle h-56 w-56 bg-white top-[-70px] right-[-60px]" />
-        <div className="poster-shape-square h-40 w-40 bg-white bottom-8 left-[8%]" />
-        <div className="max-w-7xl mx-auto relative">
-          <p className="text-xs font-semibold uppercase tracking-wider text-white/80 mb-3">Selected Builds</p>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-4">Projects</h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl">Product and engineering experiments across AI, developer tooling, and consumer UX.</p>
-        </div>
+      <section className="max-w-6xl mx-auto px-5 pt-12 pb-4">
+        <p className="eyebrow mb-3">Selected builds</p>
+        <h1 className="page-title text-5xl md:text-7xl mb-4">Things I made</h1>
+        <p className="text-lg md:text-xl max-w-3xl text-text-secondary">Product and engineering experiments across AI, developer tooling, and consumer UX.</p>
       </section>
 
       {flagships.length > 0 && (
-        <section className="bg-white px-6 py-12 md:py-16">
+        <section className="px-5 py-8">
           <div className="max-w-7xl mx-auto">
             <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">Flagship builds</p>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-8">Two things I built end to end</h2>
@@ -91,7 +87,7 @@ export default function ProjectsPage() {
                   </div>
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="h-12 px-5 rounded-md bg-accent-primary text-white hover:bg-blue-600 transition-all duration-200 hover:scale-105 inline-flex items-center text-xs font-semibold uppercase tracking-wider"
+                    className="h-12 px-5 rounded-md bg-accent-primary text-white hover:bg-sun hover:text-ink transition-all duration-200 hover:scale-105 inline-flex items-center text-xs font-semibold uppercase tracking-wider"
                   >
                     Read the build
                   </Link>
@@ -102,13 +98,13 @@ export default function ProjectsPage() {
         </section>
       )}
 
-      <section className="bg-bg-muted px-6 py-12 md:py-16">
+      <section className="px-5 py-8">
         <div className="max-w-7xl mx-auto">
           <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-6">More builds</p>
         </div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <article key={project.slug} className="rounded-lg bg-white p-5 border-2 border-border-default transition-all duration-200 hover:scale-[1.02]">
+            <article key={project.slug} className="pop-card p-5 transition-transform duration-150 hover:-translate-y-1">
               <div className="relative mb-5 rounded-lg overflow-hidden bg-bg-muted aspect-[16/10]">
                 {project.thumbnail ? (
                   <Image
@@ -121,9 +117,9 @@ export default function ProjectsPage() {
                 ) : (
                   <div className="absolute inset-0 grid grid-cols-2 gap-3 p-4">
                     <div className="rounded-md bg-white" />
-                    <div className="rounded-md bg-blue-100" />
-                    <div className="rounded-md bg-emerald-100" />
-                    <div className="rounded-md bg-amber-100" />
+                    <div className="rounded-md bg-sky" />
+                    <div className="rounded-md bg-mint" />
+                    <div className="rounded-md bg-sun" />
                   </div>
                 )}
               </div>
@@ -132,7 +128,7 @@ export default function ProjectsPage() {
                 <h2 className="text-2xl font-extrabold tracking-tight text-text-primary">{project.title}</h2>
                 <span
                   className={`text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold ${
-                    statusTone[project.status] || 'bg-gray-500 text-white'
+                    statusTone[project.status] || 'bg-white border-2 border-ink text-ink'
                   }`}
                 >
                   {project.status}

@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
-import { ThemeProvider } from '@/components/ThemeProvider';
 import { PortfolioChatWidget } from '@/components/PortfolioChatWidget';
+import { Bricolage_Grotesque, DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SAME_AS, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
-import '@fontsource/outfit/index.css';
 import './globals.css';
+
+const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', weight: ['500', '700', '800'] });
+const body = DM_Sans({ subsets: ['latin'], variable: '--font-dm', weight: ['400', '500', '700'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -40,18 +42,16 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="bg-bg-primary text-text-primary font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c') }}
         />
-        <ThemeProvider>
-          <Nav />
-          <main className="pt-16">{children}</main>
-          <Footer />
-          <PortfolioChatWidget />
-        </ThemeProvider>
+        <Nav />
+        <main className="pt-20">{children}</main>
+        <Footer />
+        <PortfolioChatWidget />
         <Analytics />
       </body>
     </html>

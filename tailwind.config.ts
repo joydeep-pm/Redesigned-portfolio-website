@@ -10,42 +10,54 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        cream: '#FFF6E6',
+        ink: '#1D1A16',
+        pink: '#FFB3C7',
+        mint: '#B8ECD2',
+        sky: '#B5D8FF',
+        sun: '#FFD86B',
+        lilac: '#D9C6FF',
         bg: {
-          primary: '#FFFFFF',
-          muted: '#F3F4F6',
-          dark: '#111827',
+          primary: '#FFF6E6',
+          muted: '#FCEBCB',
+          dark: '#1D1A16',
         },
         text: {
-          primary: '#111827',
-          secondary: '#374151',
-          muted: '#6B7280',
+          primary: '#1D1A16',
+          secondary: '#4A443B',
+          muted: '#7A7266',
           light: '#FFFFFF',
         },
         accent: {
-          primary: '#3B82F6',
-          secondary: '#10B981',
-          amber: '#F59E0B',
+          primary: '#1D1A16',
+          secondary: '#2F7A5C',
+          amber: '#FFD86B',
         },
         border: {
-          default: '#E5E7EB',
+          default: '#1D1A16',
         },
       },
       fontFamily: {
-        sans: ['Outfit', 'sans-serif'],
+        sans: ['var(--font-dm)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
-        md: '6px',
-        lg: '8px',
+        md: '12px',
+        lg: '24px',
+      },
+      boxShadow: {
+        pop: '5px 5px 0 #1D1A16',
+        'pop-lg': '7px 7px 0 #1D1A16',
       },
       typography: {
         DEFAULT: {
           css: {
-            '--tw-prose-body': '#374151',
-            '--tw-prose-headings': '#111827',
-            '--tw-prose-links': '#2563EB',
-            '--tw-prose-bold': '#111827',
-            '--tw-prose-code': '#111827',
-            '--tw-prose-pre-bg': '#F3F4F6',
+            '--tw-prose-body': '#4A443B',
+            '--tw-prose-headings': '#1D1A16',
+            '--tw-prose-links': '#1D1A16',
+            '--tw-prose-bold': '#1D1A16',
+            '--tw-prose-code': '#1D1A16',
+            '--tw-prose-pre-bg': '#FCEBCB',
             maxWidth: 'none',
           },
         },

@@ -14,17 +14,13 @@ export default function WorkPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-accent-primary text-white px-6 py-14 md:py-20">
-        <div className="poster-shape-circle h-48 w-48 bg-white top-[-60px] left-[-50px]" />
-        <div className="poster-shape-square h-40 w-40 bg-white bottom-8 right-[10%]" />
-        <div className="max-w-7xl mx-auto relative">
-          <p className="text-xs font-semibold uppercase tracking-wider text-white/85 mb-3">Career Timeline</p>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-4">Proof of Work</h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl">14+ years across banking, lending operations, and fintech product infrastructure.</p>
-        </div>
+      <section className="max-w-6xl mx-auto px-5 pt-12 pb-4">
+        <p className="eyebrow mb-3">Career timeline</p>
+        <h1 className="page-title text-5xl md:text-7xl mb-4">Proof of work</h1>
+        <p className="text-lg md:text-xl max-w-3xl text-text-secondary">14+ years across banking, lending operations, and fintech product infrastructure.</p>
       </section>
 
-      <section className="bg-bg-muted px-6 py-12 md:py-16">
+      <section className="px-5 py-8">
         <div className="max-w-4xl mx-auto">
           {works.map((work, i) => (
             <TimelineEntry

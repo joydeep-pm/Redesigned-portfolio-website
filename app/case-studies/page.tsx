@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 };
 
 const colorClasses: Record<string, string> = {
-  blue: 'bg-blue-100',
-  purple: 'bg-violet-100',
-  green: 'bg-emerald-100',
-  orange: 'bg-amber-100',
-  pink: 'bg-rose-100',
-  mint: 'bg-teal-100',
+  blue: 'bg-sky',
+  purple: 'bg-lilac',
+  green: 'bg-mint',
+  orange: 'bg-sun',
+  pink: 'bg-pink',
+  mint: 'bg-mint',
 };
 
 export default function CaseStudiesPage() {
@@ -23,20 +23,16 @@ export default function CaseStudiesPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-accent-amber px-6 py-14 md:py-20">
-        <div className="poster-shape-circle h-56 w-56 bg-white top-[-70px] left-[-70px]" />
-        <div className="poster-shape-square h-44 w-44 bg-white bottom-8 right-[10%]" />
-        <div className="max-w-7xl mx-auto relative">
-          <p className="text-xs font-semibold uppercase tracking-wider text-text-primary/75 mb-3">Deep Dives</p>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] text-text-primary mb-4">Case Studies</h1>
-          <p className="text-lg md:text-xl text-text-primary/85 max-w-3xl">Product teardowns across lending, payments, neobanking, and conversion-led growth.</p>
-        </div>
+      <section className="max-w-6xl mx-auto px-5 pt-12 pb-4">
+        <p className="eyebrow mb-3">Independent teardowns</p>
+        <h1 className="page-title text-5xl md:text-7xl mb-4">Product teardowns</h1>
+        <p className="text-lg md:text-xl max-w-3xl text-text-secondary">Product teardowns across lending, payments, neobanking, and conversion-led growth.</p>
       </section>
 
-      <section className="bg-white px-6 py-12 md:py-16">
+      <section className="px-5 py-8">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
           {caseStudies.map((cs, index) => (
-            <article key={cs.slug} className="rounded-lg bg-bg-muted p-5 transition-all duration-200 hover:scale-[1.02]">
+            <article key={cs.slug} className="pop-card p-5 transition-transform duration-150 hover:-translate-y-1">
               <div
                 className={`relative aspect-[16/10] rounded-lg overflow-hidden mb-5 ${
                   cs.thumbnail ? '' : colorClasses[cs.gradient || 'blue'] || colorClasses.blue
@@ -75,7 +71,7 @@ export default function CaseStudiesPage() {
 
               <Link
                 href={`/case-studies/${cs.slug}`}
-                className="h-12 px-5 rounded-md bg-accent-primary text-white hover:bg-blue-600 transition-all duration-200 hover:scale-105 inline-flex items-center text-xs font-semibold uppercase tracking-wider"
+                className="h-12 px-5 rounded-md bg-accent-primary text-white hover:bg-sun hover:text-ink transition-all duration-200 hover:scale-105 inline-flex items-center text-xs font-semibold uppercase tracking-wider"
               >
                 Read Case Study
               </Link>
