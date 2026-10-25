@@ -3,6 +3,7 @@ import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { PortfolioChatWidget } from '@/components/PortfolioChatWidget';
+import { Analytics } from '@vercel/analytics/next';
 import { SAME_AS, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
 import '@fontsource/outfit/index.css';
 import './globals.css';
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <PortfolioChatWidget />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
