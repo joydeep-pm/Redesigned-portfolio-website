@@ -4,7 +4,7 @@ const links = [
   { href: 'mailto:joytdh@gmail.com', label: 'Email', icon: Mail },
   { href: 'https://www.linkedin.com/in/joydeepsarkar1987/', label: 'LinkedIn', icon: Linkedin },
   { href: 'https://github.com/joydeep-pm', label: 'GitHub', icon: Github },
-  { href: 'https://x.com/joytdh', label: 'Twitter', icon: Twitter },
+  { href: 'https://x.com/joytdh', label: 'X', icon: Twitter },
 ];
 
 export function Footer() {
@@ -18,7 +18,7 @@ export function Footer() {
               Let&apos;s build lending products that scale.
             </h2>
             <p className="text-white/80 max-w-xl">
-              Open to product leadership roles, advisory engagements, and fintech operating discussions.
+              Open to advisory work and select leadership conversations in fintech and lending.
             </p>
           </div>
 
