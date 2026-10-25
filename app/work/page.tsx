@@ -20,7 +20,7 @@ export default function WorkPage() {
         <div className="max-w-7xl mx-auto relative">
           <p className="text-xs font-semibold uppercase tracking-wider text-white/85 mb-3">Career Timeline</p>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95] mb-4">Proof of Work</h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl">12+ years across banking, lending operations, and fintech product infrastructure.</p>
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl">14+ years across banking, lending operations, and fintech product infrastructure.</p>
         </div>
       </section>
 
@@ -37,6 +37,7 @@ export default function WorkPage() {
               isLast={i === works.length - 1}
               logo={work.logo}
               priority={i < 4}
+              defaultExpanded={i < 2}
             >
               <MDXRemote source={work.content} />
             </TimelineEntry>

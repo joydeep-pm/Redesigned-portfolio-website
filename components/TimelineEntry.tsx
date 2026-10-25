@@ -13,11 +13,23 @@ interface Props {
   isLast?: boolean;
   logo?: string;
   priority?: boolean;
+  defaultExpanded?: boolean;
   children?: React.ReactNode;
 }
 
-export function TimelineEntry({ company, role, duration, metric, current, isLast, logo, priority, children }: Props) {
-  const [expanded, setExpanded] = useState(false);
+export function TimelineEntry({
+  company,
+  role,
+  duration,
+  metric,
+  current,
+  isLast,
+  logo,
+  priority,
+  defaultExpanded = false,
+  children,
+}: Props) {
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   return (
     <div className="relative pl-8 pb-8">
