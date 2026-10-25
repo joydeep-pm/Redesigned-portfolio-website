@@ -4,10 +4,23 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
 import remarkGfm from 'remark-gfm';
+import type { Metadata } from 'next';
 
 export async function generateStaticParams() {
   const projects = getAllProjects();
   return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.description,
+    alternates: { canonical: `/projects/${slug}` },
+    openGraph: { title: project.title, description: project.description, url: `/projects/${slug}` },
+  };
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -17,11 +30,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <section className="bg-accent-primary text-white px-6 py-12">
+      <section className="bg-lilac text-ink border-b-[3px] border-ink px-6 py-12">
         <div className="max-w-7xl mx-auto">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/85 hover:text-white mb-6"
+            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-ink/80 hover:text-ink mb-6"
           >
             <ArrowLeft size={14} strokeWidth={2.5} /> Back to Projects
           </Link>
@@ -30,7 +43,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[0.95]">{project.title}</h1>
             </div>
             <div>
-              <p className="text-lg text-white/90 leading-relaxed mb-6">{project.description}</p>
+              <p className="text-lg text-ink/85 leading-relaxed mb-6">{project.description}</p>
               <div className="flex flex-wrap gap-3">
                 {project.demoUrl && (
                   <a
@@ -47,7 +60,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     href={project.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-12 px-5 rounded-md border-4 border-white text-white hover:bg-white hover:text-accent-primary transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider"
+                    className="h-12 px-5 rounded-md border-4 border-ink text-ink hover:bg-white transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider"
                   >
                     <Github size={14} strokeWidth={2.5} /> View Code
                   </a>

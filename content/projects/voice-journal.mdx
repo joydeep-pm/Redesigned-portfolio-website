@@ -5,12 +5,13 @@ status: completed
 tech: ["React Native", "Expo", "SQLite", "OpenAI Whisper", "GPT-4o-mini", "TypeScript"]
 featured: true
 order: 4
-thumbnail: /images/projects/voice-journal.png
+thumbnail: /images/projects/voice-journal.webp
+learned: "AI is a helper, never a gate: transcription, summaries and tags run in a retrying background queue, so saving an entry never waits on a model call. The OpenAI key stays on a backend proxy, not in the app. Next on my list: automated tests for migrations and the worker flows."
 ---
 
 ## 🔍 The Problem
 
-Journaling is powerful, but **typing on a phone kills the flow**. Thoughts come fastest when you're walking, commuting, or lying in bed—moments when a keyboard is the last thing you want.
+Journaling is powerful, but **typing on a phone kills the flow**. Thoughts come fastest when you're walking, commuting, or lying in bed, moments when a keyboard is the last thing you want.
 
 Voice memos solve the capture problem but create a new one: recordings pile up, unsearchable and unreviewed. You end up with hundreds of audio files and zero actionable insights.
 
@@ -18,12 +19,12 @@ Voice memos solve the capture problem but create a new one: recordings pile up, 
 
 A mobile-first voice journal that turns speech into structured, searchable entries through an AI pipeline: **Record → Transcribe → Summarize → Tag → Analyze**.
 
-Every entry gets an AI-generated summary, mood tag, and topic classification—making weeks of thoughts instantly searchable and reviewable through weekly insight reports.
+Every entry gets an AI-generated summary, mood tag, and topic classification, making weeks of thoughts instantly searchable and reviewable through weekly insight reports.
 
 <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', margin: '2rem 0'}}>
-  <img src="/images/projects/voice-journal/home-ios.png" alt="Voice Journal — Home screen with New Recording button and journal entries" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
-  <img src="/images/projects/voice-journal/entry-playback-ios.png" alt="Voice Journal — Entry detail with audio playback and AI summary" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
-  <img src="/images/projects/voice-journal/insights-ios.png" alt="Voice Journal — Weekly insights with tags and themes" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/home-ios.png" alt="Voice Journal - Home screen with New Recording button and journal entries" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/entry-playback-ios.webp" alt="Voice Journal - Entry detail with audio playback and AI summary" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/insights-ios.webp" alt="Voice Journal - Weekly insights with tags and themes" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
 </div>
 
 ## 🛠️ Technical Implementation
@@ -35,10 +36,10 @@ Every entry gets an AI-generated summary, mood tag, and topic classification—m
 - Configurable audio quality and format settings
 
 ### 🧠 AI Processing Pipeline
-- **Step 1 — Transcription:** OpenAI Whisper API converts audio to text with high accuracy
-- **Step 2 — Summarization:** GPT-4o-mini condenses transcripts into concise journal entries
-- **Step 3 — Auto-Tagging:** AI extracts topics, people, and themes from content
-- **Step 4 — Mood Detection:** Sentiment analysis classifies emotional tone per entry
+- **Step 1 - Transcription:** OpenAI Whisper API converts audio to text with high accuracy
+- **Step 2 - Summarization:** GPT-4o-mini condenses transcripts into concise journal entries
+- **Step 3 - Auto-Tagging:** AI extracts topics, people, and themes from content
+- **Step 4 - Mood Detection:** Sentiment analysis classifies emotional tone per entry
 
 ### 💾 SQLite Schema & Migrations
 - Normalized schema: `entries`, `tags`, `entry_tags`, `weekly_summaries`
@@ -50,7 +51,7 @@ Every entry gets an AI-generated summary, mood tag, and topic classification—m
 - Biometric authentication (Face ID / fingerprint) on app launch
 - All data stored locally on-device via SQLite
 - Audio files encrypted at rest
-- Zero cloud dependency—no account required
+- Zero cloud dependency, no account required
 
 ## 🎯 Key Features
 
@@ -64,9 +65,9 @@ Every entry gets an AI-generated summary, mood tag, and topic classification—m
 - 📴 **Offline-First:** Works without internet; AI processing queues until connected
 
 <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', margin: '2rem 0'}}>
-  <img src="/images/projects/voice-journal/entry-detail-ios.png" alt="Entry detail — mood detection and tag management" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/entry-detail-ios.webp" alt="Entry detail - mood detection and tag management" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
   <img src="/images/projects/voice-journal/entry-tags-android.png" alt="AI-generated tags with full transcript view" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
-  <img src="/images/projects/voice-journal/settings-ios.png" alt="Settings — AI connectivity, data export, and diagnostics" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/settings-ios.png" alt="Settings - AI connectivity, data export, and diagnostics" style={{width: '30%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
 </div>
 
 ## 📊 Technical Highlights
@@ -77,14 +78,14 @@ Every entry gets an AI-generated summary, mood tag, and topic classification—m
 | 💾 Database Tables | **4** (entries, tags, entry_tags, weekly_summaries) |
 | 🔍 Search Latency | **< 100ms** full-text across all entries |
 | 🔐 Auth Method | **Biometric** (Face ID / Fingerprint) |
-| 📴 Offline Support | **Full** — queues AI processing for sync |
+| 📴 Offline Support | **Full** - queues AI processing for sync |
 
 ### 📱 Cross-Platform: iOS & Android
 
 <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', margin: '2rem 0'}}>
-  <img src="/images/projects/voice-journal/insights-ios.png" alt="Insights on iOS simulator" style={{width: '23%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/insights-ios.webp" alt="Insights on iOS simulator" style={{width: '23%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
   <img src="/images/projects/voice-journal/insights-android.png" alt="Insights on Android device" style={{width: '23%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
-  <img src="/images/projects/voice-journal/entry-playback-ios.png" alt="Entry playback on iOS" style={{width: '23%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
+  <img src="/images/projects/voice-journal/entry-playback-ios.webp" alt="Entry playback on iOS" style={{width: '23%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
   <img src="/images/projects/voice-journal/entry-playback-android.png" alt="Entry playback on Android" style={{width: '23%', borderRadius: '1rem', boxShadow: '0 8px 30px rgba(0,0,0,0.12)'}} />
 </div>
 

@@ -12,7 +12,7 @@ export function ChatLauncher({ onOpen, shouldPulse = false }: Props) {
       <button
         type="button"
         onClick={onOpen}
-        className="relative h-16 w-16 rounded-full bg-accent-primary text-white border-4 border-white hover:bg-blue-600 transition-all duration-200 hover:scale-105 flex items-center justify-center"
+        className="relative h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-accent-primary text-white border-2 sm:border-4 border-white hover:bg-blue-600 transition-all duration-200 hover:scale-105 flex items-center justify-center"
         aria-label="Open portfolio concierge chat"
       >
         <MessageCircle size={24} strokeWidth={2.5} />

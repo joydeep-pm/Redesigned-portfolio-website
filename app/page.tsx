@@ -1,201 +1,210 @@
+import fs from 'fs';
+import path from 'path';
 import Link from 'next/link';
-import { Building2, HandCoins, TrendingUp, Bot, ArrowRight, FileDown } from 'lucide-react';
-import { MetricCard, SkillCard } from '@/components';
+import Image from 'next/image';
+import { ArrowRight, ExternalLink, FileDown, Linkedin } from 'lucide-react';
+import { SAME_AS } from '@/lib/site';
+import { MetricCard, CaseStudyCard } from '@/components';
 import { HeroPortrait } from '@/components/HeroPortrait';
+import { HeroAsk } from '@/components/HeroAsk';
+import { LifecycleStrip } from '@/components/LifecycleStrip';
+import { getAllCaseStudies, getAllProjects, getAllThreads } from '@/lib/content';
 
 const metrics = [
-  { number: '$200M+', label: 'Portfolio Processed' },
-  { number: '4x', label: 'YoY Growth' },
-  { number: '15+', label: 'Institutions' },
-  { number: '2M+', label: 'Borrowers' },
+  { number: '$200M+', label: 'loan against securities portfolio', context: 'M2P Fintech' },
+  { number: '4x', label: 'loan disbursals, year on year', context: 'Paytm' },
+  { number: '15+', label: 'institutions on the platform', context: 'M2P Fintech' },
+  { number: '$50M+', label: 'co-lending volume, 5 enterprise accounts', context: 'M2P Fintech' },
 ];
 
-const skills = [
+const jobs = [
   {
-    icon: <Building2 size={26} strokeWidth={2.5} />,
-    title: 'Lending Infrastructure',
-    description: (
-      <>
-        Architecting systems from origination to collections, processing <span className="font-semibold text-text-primary">$200M+ portfolios</span> with strict RBI
-        alignment.
-      </>
-    ),
+    years: '2024 to now',
+    company: 'M2P Fintech',
+    role: 'Senior Director, Core Lending Suite',
+    line: 'Co-lending orchestration and loan against securities on an API-first lending platform.',
+    tone: 'bg-mint',
   },
   {
-    icon: <HandCoins size={26} strokeWidth={2.5} />,
-    title: 'Co-Lending & Partnerships',
-    description: (
-      <>
-        Built orchestration modules for Banks and NBFCs, supporting <span className="font-semibold text-text-primary">₹1500Cr+ monthly disbursals</span>.
-      </>
-    ),
+    years: '2022 to 2024',
+    company: 'Paytm',
+    role: 'Director, Product, Lending',
+    line: '4x loan disbursals, 500K+ active borrowers and 5 lending partners.',
+    tone: 'bg-pink',
   },
   {
-    icon: <TrendingUp size={26} strokeWidth={2.5} />,
-    title: 'Product Strategy & Growth',
-    description: (
-      <>
-        Drove <span className="font-semibold text-text-primary">4x YoY growth</span> through funnel optimization and revenue products reducing overhead by 60%.
-      </>
-    ),
-  },
-  {
-    icon: <Bot size={26} strokeWidth={2.5} />,
-    title: 'AI & Automation',
-    description: (
-      <>
-        Built LLM workflows for PRD generation and reconciliation automation, cutting manual work by <span className="font-semibold text-text-primary">75%</span>.
-      </>
-    ),
+    years: '2021 to 2022',
+    company: 'Finvolv',
+    role: 'Lead Product Manager',
+    line: 'An API-first lending stack deployed at 12+ institutions. ARR 3x.',
+    tone: 'bg-sky',
   },
 ];
 
-const sections = [
-  {
-    title: 'Proof of Work',
-    href: '/work',
-    desc: '12+ years across SBI, Paytm, Finvolv, and M2P building lending systems at scale.',
-    tone: 'bg-blue-50 hover:bg-blue-100',
-  },
-  {
-    title: 'Case Studies',
-    href: '/case-studies',
-    desc: 'Product teardown and execution narratives for neobank, BNPL, collections, and growth work.',
-    tone: 'bg-emerald-50 hover:bg-emerald-100',
-  },
-  {
-    title: 'Projects & Experiments',
-    href: '/projects',
-    desc: 'Hands-on product builds across AI tooling, web apps, and internal systems.',
-    tone: 'bg-amber-50 hover:bg-amber-100',
-  },
-];
+const FLAGSHIPS = ['voice-journal', 'milestone-perk-tracker'];
+
+const resumeAvailable = fs.existsSync(path.join(process.cwd(), 'public', 'resume.pdf'));
 
 export default function Home() {
+  const projects = getAllProjects();
+  const builds = FLAGSHIPS.map((slug) => projects.find((p) => p.slug === slug)).filter(
+    (p): p is NonNullable<typeof p> => Boolean(p)
+  );
+  const teardowns = getAllCaseStudies()
+    .filter((cs) => cs.featured)
+    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
+    .slice(0, 3);
+  const threads = getAllThreads().slice(0, 2);
+
   return (
-    <>
-      <section className="relative overflow-hidden bg-accent-primary text-white px-6 py-16 md:py-24">
-        <div className="poster-shape-circle h-60 w-60 bg-white top-[-80px] left-[-70px]" />
-        <div className="poster-shape-square h-44 w-44 bg-white top-12 right-[8%]" />
-        <div className="poster-shape-circle h-72 w-72 bg-white bottom-[-120px] right-[-80px]" />
-
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 items-center relative">
-          <div className="lg:col-span-7">
-            <p className="text-xs md:text-sm font-semibold uppercase tracking-wider text-white/85 mb-4">Fintech Product Leader</p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[0.95] tracking-[-0.02em] mb-6">
-              Joydeep Sarkar
-              <span className="block text-white/90">Lending Infrastructure Specialist</span>
-            </h1>
-            <p className="text-lg md:text-2xl leading-relaxed text-white/90 max-w-2xl mb-8">
-              Building scalable financial products that bridge traditional banking and modern technology.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/work"
-                className="h-14 md:h-16 px-8 rounded-md bg-white text-accent-primary hover:bg-gray-100 transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 font-semibold uppercase tracking-wider text-sm"
-              >
-                See My Work <ArrowRight size={18} strokeWidth={2.5} />
-              </Link>
-              <a
-                href="/resume.pdf"
-                className="h-14 md:h-16 px-8 rounded-md border-4 border-white text-white hover:bg-white hover:text-accent-primary transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 font-semibold uppercase tracking-wider text-sm"
-              >
-                Download Resume <FileDown size={18} strokeWidth={2.5} />
-              </a>
-            </div>
+    <div className="max-w-6xl mx-auto px-5">
+      <section className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center py-12 md:py-16">
+        <div>
+          <p className="eyebrow mb-4">Senior Director, Core Lending Suite · M2P Fintech</p>
+          <h1 className="page-title text-5xl md:text-7xl">
+            I build the{' '}
+            <mark className="bg-sun rounded-xl px-2 text-ink">lending tech</mark> banks run on.
+          </h1>
+          <p className="mt-6 text-lg md:text-xl max-w-xl text-text-secondary">
+            API-first lending platforms for banks, NBFCs and fintechs: $50M+ co-lending volume, 15+ institutions, and 4x YoY disbursal
+            growth. Based in Bengaluru.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/work" className="pop-btn-solid">
+              See my work <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
+            <a
+              href={resumeAvailable ? '/resume.pdf' : SAME_AS[0]}
+              {...(resumeAvailable ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+              className="pop-btn"
+            >
+              {resumeAvailable ? (
+                <>
+                  Resume <FileDown size={16} strokeWidth={2.5} />
+                </>
+              ) : (
+                <>
+                  LinkedIn <Linkedin size={16} strokeWidth={2.5} />
+                </>
+              )}
+            </a>
           </div>
+          <HeroAsk />
+        </div>
+        <HeroPortrait />
+      </section>
 
-          <div className="lg:col-span-5">
-            <HeroPortrait />
-          </div>
+      <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 pb-4">
+        {metrics.map((m, index) => (
+          <MetricCard key={m.label} number={m.number} label={m.label} context={m.context} index={index} />
+        ))}
+      </section>
+
+      <section className="pt-16">
+        <h2 className="page-title text-4xl md:text-5xl mb-2">Built across the loan lifecycle</h2>
+        <p className="text-text-secondary mb-8 max-w-2xl">Where the work happened, and what it moved.</p>
+        <LifecycleStrip />
+      </section>
+
+      <section className="pt-16">
+        <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
+          <h2 className="page-title text-4xl md:text-5xl">Where I&apos;ve worked</h2>
+          <Link href="/work" className="font-bold underline underline-offset-4 inline-flex items-center gap-1">
+            Full timeline <ArrowRight size={16} strokeWidth={2.5} />
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {jobs.map((job) => (
+            <Link
+              key={job.company}
+              href="/work"
+              className={`block pop-card p-6 ${job.tone} transition-transform duration-150 hover:-translate-y-1`}
+            >
+              <span className="eyebrow">{job.years}</span>
+              <h3 className="font-display text-2xl font-extrabold tracking-tight mt-2">{job.company}</h3>
+              <p className="text-sm font-bold mt-1">{job.role}</p>
+              <p className="mt-3">{job.line}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <section className="bg-bg-muted px-6 py-10 md:py-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {metrics.map((m, index) => (
-              <MetricCard key={m.label} number={m.number} label={m.label} index={index} />
+      {builds.length > 0 && (
+        <section className="pt-16">
+          <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
+            <h2 className="page-title text-4xl md:text-5xl">Things I made</h2>
+            <Link href="/projects" className="font-bold underline underline-offset-4 inline-flex items-center gap-1">
+              All builds <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {builds.map((p) => (
+              <Link
+                key={p.slug}
+                href="/projects"
+                className="block pop-card overflow-hidden transition-transform duration-150 hover:-translate-y-1"
+              >
+                <div className="relative aspect-[16/9] bg-cream border-b-[3px] border-ink">
+                  {p.thumbnail && (
+                    <Image src={p.thumbnail} alt={p.title} fill sizes="(min-width: 768px) 560px, 100vw" className="object-contain" />
+                  )}
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-2xl font-extrabold tracking-tight">{p.title}</h3>
+                  <p className="mt-2 text-text-secondary">{p.description}</p>
+                </div>
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="bg-white px-6 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-4">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-3">Mission</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight">
-              Making Indian lending infrastructure world-class.
-            </h2>
+      {teardowns.length > 0 && (
+        <section className="pt-16">
+          <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
+            <h2 className="page-title text-4xl md:text-5xl">Product teardowns</h2>
+            <Link href="/case-studies" className="font-bold underline underline-offset-4 inline-flex items-center gap-1">
+              All teardowns <ArrowRight size={16} strokeWidth={2.5} />
+            </Link>
           </div>
-          <div className="lg:col-span-8 space-y-6 text-lg leading-relaxed text-text-secondary">
-            <p>
-              With 12+ years spanning traditional banking (SBI) to high-growth fintech, I translate complex RBI regulation into clear product strategy and scalable delivery.
-            </p>
-            <p>
-              I specialize in API-first lending systems, co-lending frameworks, and portfolio operations that manage high disbursal volume while improving inclusion outcomes.
-            </p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {teardowns.map((cs) => (
+              <CaseStudyCard
+                key={cs.slug}
+                slug={cs.slug}
+                title={cs.title}
+                company={cs.company}
+                problem={cs.problem}
+                tags={cs.tags}
+                gradient={cs.gradient}
+              />
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="relative overflow-hidden bg-accent-secondary px-6 py-16 md:py-20">
-        <div className="poster-shape-square h-44 w-44 bg-white top-10 left-10" />
-        <div className="poster-shape-circle h-56 w-56 bg-white bottom-[-80px] right-[-40px]" />
-
-        <div className="max-w-7xl mx-auto relative">
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-white/80 mb-2">Core Capabilities</p>
-              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white">How I Build</h2>
-            </div>
-          </div>
+      {threads.length > 0 && (
+        <section className="pt-16">
+          <h2 className="page-title text-4xl md:text-5xl mb-8">Things I wrote</h2>
           <div className="grid md:grid-cols-2 gap-5">
-            {skills.map((skill) => (
-              <SkillCard key={skill.title} {...skill} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-bg-muted px-6 py-16 md:py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">Explore</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">Portfolio Sections</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            {sections.map((item) => (
-              <Link
-                key={item.title}
-                href={item.href}
-                className={`group rounded-lg p-7 ${item.tone} transition-all duration-200 hover:scale-[1.02]`}
+            {threads.map((t) => (
+              <a
+                key={t.slug}
+                href={t.externalUrl || '/threads'}
+                {...(t.externalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="block rounded-lg border-[3px] border-dashed border-ink bg-white p-6 transition-colors duration-150 hover:bg-sun"
               >
-                <h3 className="text-2xl font-extrabold tracking-tight text-text-primary mb-3">{item.title}</h3>
-                <p className="text-text-secondary leading-relaxed mb-5">{item.desc}</p>
-                <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-accent-primary">
-                  Open <ArrowRight size={16} strokeWidth={2.5} className="group-hover:translate-x-1 transition-transform duration-200" />
-                </span>
-              </Link>
+                <h3 className="font-display text-xl font-extrabold tracking-tight">{t.title}</h3>
+                <p className="mt-2 text-sm text-text-secondary inline-flex items-center gap-2">
+                  {new Date(t.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                  {t.readingTime ? ` · ${t.readingTime} min` : ''}
+                  {t.externalUrl && <ExternalLink size={14} strokeWidth={2.5} />}
+                </p>
+              </a>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="bg-accent-amber px-6 py-14">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-6">
-          <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-text-primary">Available for product leadership and advisory roles.</h2>
-          <a
-            href="mailto:joytdh@gmail.com"
-            className="h-14 px-7 rounded-md bg-text-primary text-white hover:bg-black transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider"
-          >
-            Start a Conversation <ArrowRight size={16} strokeWidth={2.5} />
-          </a>
-        </div>
-      </section>
-    </>
+        </section>
+      )}
+    </div>
   );
 }
