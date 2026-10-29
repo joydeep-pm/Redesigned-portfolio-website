@@ -66,7 +66,6 @@ export async function generateGroundedAnswer(params: {
     body: JSON.stringify({
       model: CHAT_MODEL,
       max_tokens: 700,
-      temperature: 0.2,
       system,
       messages: buildMessages(params.history, params.userMessage),
     }),
