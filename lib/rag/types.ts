@@ -12,7 +12,7 @@ export interface RagChunkMetadata {
 export interface RagChunk {
   id: string;
   text: string;
-  embedding: number[];
+  embedding?: number[];
   metadata: RagChunkMetadata;
 }
 

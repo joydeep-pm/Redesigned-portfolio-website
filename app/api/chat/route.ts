@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { embedSingleText, generateGroundedAnswer } from '@/lib/rag/openai';
+import { generateGroundedAnswer, getChatApiKey } from '@/lib/rag/anthropic';
 import { getSuggestedQuestions, resultsToCitations } from '@/lib/rag/prompt';
 import { loadRagIndex, retrieveTopChunks } from '@/lib/rag/retrieval';
 import type { ChatRequestBody, ChatHistoryMessage, ChatResponseBody } from '@/lib/rag/types';
@@ -54,19 +54,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Message is required.' }, { status: 400 });
     }
 
+    if (!getChatApiKey()) {
+      return NextResponse.json({ error: 'The portfolio concierge is not configured yet.' }, { status: 503 });
+    }
+
     const index = loadRagIndex();
     if (!index.chunks.length) {
       return NextResponse.json(
-        {
-          error:
-            'Chat knowledge index is not built yet. Configure OPENAI_API_KEY and run `npm run rag:index` to generate embeddings.',
-        },
+        { error: 'Chat knowledge index is not built yet. Run `npm run rag:index`.' },
         { status: 503 }
       );
     }
 
-    const queryEmbedding = await embedSingleText(message);
-    const retrieved = retrieveTopChunks({ queryEmbedding, routeContext, topK: 6, maxPerDocument: 2 });
+    const retrieved = retrieveTopChunks({ query: message, routeContext, topK: 6, maxPerDocument: 2 });
 
     if (!retrieved.length) {
       const emptyResponse: ChatResponseBody = {
@@ -94,7 +94,7 @@ export async function POST(request: Request) {
     return NextResponse.json(responseBody);
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unexpected chat error';
-    const status = message.includes('OPENAI_API_KEY') || message.includes('RAG index') ? 503 : 500;
+    const status = message.includes('CLAUDE_KEY') || message.includes('RAG index') ? 503 : 500;
 
     return NextResponse.json(
       {

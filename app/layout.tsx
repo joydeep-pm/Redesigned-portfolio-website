@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer';
 import { PortfolioChatWidget } from '@/components/PortfolioChatWidget';
 import { Bricolage_Grotesque, DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
-import { SAME_AS, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
+import { CHAT_ENABLED, SAME_AS, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
 import './globals.css';
 
 const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', weight: ['500', '700', '800'] });
@@ -29,8 +29,6 @@ export const metadata: Metadata = {
   },
 };
 
-const chatEnabled = Boolean(process.env.OPENAI_API_KEY);
-
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -53,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main className="pt-20">{children}</main>
         <Footer />
-        {chatEnabled && <PortfolioChatWidget />}
+        {CHAT_ENABLED && <PortfolioChatWidget />}
         <Analytics />
       </body>
     </html>

@@ -1,5 +1,6 @@
 export const SITE_URL = 'https://www.joydeepsarkar.me';
 export const SITE_NAME = 'Joydeep Sarkar';
+export const CHAT_ENABLED = Boolean(process.env.CLAUDE_KEY || process.env.ANTHROPIC_API_KEY);
 export const SITE_TITLE = 'Joydeep Sarkar | Fintech Product Leader';
 export const SITE_DESCRIPTION =
   'Senior Director of Product at M2P Fintech. Building lending infrastructure for Indian Digital Lending.';

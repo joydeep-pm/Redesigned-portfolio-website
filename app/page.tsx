@@ -3,7 +3,7 @@ import path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, ExternalLink, FileDown, Linkedin } from 'lucide-react';
-import { SAME_AS } from '@/lib/site';
+import { CHAT_ENABLED, SAME_AS } from '@/lib/site';
 import { MetricCard, CaseStudyCard } from '@/components';
 import { HeroPortrait } from '@/components/HeroPortrait';
 import { HeroAsk } from '@/components/HeroAsk';
@@ -89,7 +89,7 @@ export default function Home() {
               )}
             </a>
           </div>
-          {process.env.OPENAI_API_KEY && <HeroAsk />}
+          {CHAT_ENABLED && <HeroAsk />}
         </div>
         <HeroPortrait />
       </section>
