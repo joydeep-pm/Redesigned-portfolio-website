@@ -29,6 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
+const chatEnabled = Boolean(process.env.OPENAI_API_KEY);
+
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -51,7 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main className="pt-20">{children}</main>
         <Footer />
-        <PortfolioChatWidget />
+        {chatEnabled && <PortfolioChatWidget />}
         <Analytics />
       </body>
     </html>

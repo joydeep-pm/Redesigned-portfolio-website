@@ -89,7 +89,7 @@ export default function Home() {
               )}
             </a>
           </div>
-          <HeroAsk />
+          {process.env.OPENAI_API_KEY && <HeroAsk />}
         </div>
         <HeroPortrait />
       </section>
