@@ -94,6 +94,7 @@ export async function POST(request: Request) {
     return NextResponse.json(responseBody);
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unexpected chat error';
+    console.error('[chat]', message);
     const status = message.includes('CLAUDE_KEY') || message.includes('RAG index') ? 503 : 500;
 
     return NextResponse.json(
