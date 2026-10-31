@@ -83,7 +83,7 @@
 .oh .rrow p{font-size:17px;color:#4a443c}
 @media(max-width:780px){.oh .rrow{grid-template-columns:1fr;gap:6px}}
 .oh .cta{background:var(--ink);color:var(--cream);margin-top:-34px;z-index:7;padding:110px 0 60px}
-.oh .cta h2{font-size:clamp(34px,5.4vw,80px);font-weight:800;line-height:.95;margin-top:18px;max-width:900px}
+.oh .cta h2{font-size:clamp(34px,5.4vw,80px);font-weight:800;line-height:.95;margin-top:18px}
 .oh .cta .row{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap}
 .oh .cta .foot{margin-top:90px;display:flex;justify-content:space-between;font-size:13px;opacity:.6;border-top:1px solid var(--cline);padding-top:18px}
 

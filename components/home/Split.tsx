@@ -17,8 +17,21 @@ export function Split({
 }) {
   let d = 0;
   const out: ReactNode[] = [];
+  const tails: Record<number, string> = {};
+  const texts = parts.map((part, pi) => {
+    if (typeof part !== 'string') return part;
+    const prev = parts[pi - 1];
+    if (prev && typeof prev !== 'string') {
+      const m = part.match(/^\S+/);
+      if (m) {
+        tails[pi - 1] = m[0];
+        return part.slice(m[0].length);
+      }
+    }
+    return part;
+  });
 
-  parts.forEach((part, pi) => {
+  texts.forEach((part, pi) => {
     if (typeof part === 'string') {
       part.split(/(\s+)/).forEach((token, ti) => {
         if (!token) return;
@@ -38,6 +51,7 @@ export function Split({
       <span className="w" key={`${pi}-m`}>
         <span style={{ transitionDelay: `${d++ * 70}ms` }}>
           <mark className={lightMark ? 'lt' : undefined}>{part.mark}</mark>
+          {tails[pi]}
         </span>
       </span>
     );
