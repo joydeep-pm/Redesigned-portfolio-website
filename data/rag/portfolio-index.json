@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "createdAt": "2026-10-31T21:40:48.354Z",
+  "createdAt": "2026-10-31T21:49:51.998Z",
   "embeddingModel": "keyword-bm25",
   "dimensions": 0,
   "chunks": [
     {
       "id": "profile:joydeep-sarkar::chunk-0",
-      "text": "Joydeep Sarkar is a fintech product leader and lending infrastructure specialist. He builds scalable financial products bridging traditional banking and modern technology. Key metrics include: $200M+ customer portfolio supported at M2P Fintech, 4x YoY loan disbursal growth at Paytm, 40+ institutions on M2P's Core Lending Suite, and $50M+ co-lending volume across 5 enterprise accounts at M2P. He has 15+ years of experience spanning Infosys, SBI, AdiFi, Finvolv, Paytm, and M2P. Core strengths include lending infrastructure, co-lending partnerships, product strategy and growth, and AI automation. He led the lender integration platform that onboarded 5 lending partners at Paytm, and led the design and rollout of M2P's co-lending module.",
+      "text": "Joydeep Sarkar is a fintech product leader and lending infrastructure specialist. He builds scalable financial products bridging traditional banking and modern technology. Key metrics include: $200M+ customer portfolio supported at M2P Fintech, 4x YoY loan disbursal growth at Paytm, 40+ institutions on M2P's Core Lending Suite, and $50M+ co-lending volume across 5 enterprise accounts at M2P. He has 15+ years of experience spanning Infosys, SBI, AdiFi, Finvolv, Paytm, and M2P. Core strengths include lending infrastructure, co-lending partnerships, product strategy and growth, and AI automation. He led the lender integration platform that onboarded 5 lending partners at Paytm (₹1,500Cr monthly disbursement capacity), and led the design and rollout of M2P's co-lending module.",
       "metadata": {
         "sourceType": "profile",
         "slug": "joydeep-sarkar",
@@ -22,7 +22,7 @@
     },
     {
       "id": "profile:joydeep-sarkar::chunk-1",
-      "text": "egration platform that onboarded 5 lending partners at Paytm, and led the design and rollout of M2P's co-lending module. He is open to advisory work and select leadership conversations. Contact channels include email, LinkedIn, GitHub, and Twitter/X via the website footer.",
+      "text": "g partners at Paytm (₹1,500Cr monthly disbursement capacity), and led the design and rollout of M2P's co-lending module. He is open to advisory work and select leadership conversations. Contact channels include email, LinkedIn, GitHub, and Twitter/X via the website footer.",
       "metadata": {
         "sourceType": "profile",
         "slug": "joydeep-sarkar",
@@ -83,7 +83,7 @@
     },
     {
       "id": "work:finvolv::chunk-2",
-      "text": "Magento, Shopify and WooCommerce plug-ins plus a self-service Merchant Portal removed the engineering bottleneck **Payments:** PayPal, STC Pay, Telr and Apple Pay integrations; Arabic localisation Finvolv LMS (B2B SaaS) **API-first stack:** 83% reduction in time-to-market for new loan products **Revenue:** 3x ARR growth, with 27% QoQ growth **Integrations:** 5 LMS integrations averaging 3 weeks each **Planning:** Introduced quarterly OKR planning and structured client onboarding documentation",
+      "text": "Magento, Shopify and WooCommerce plug-ins plus a self-service Merchant Portal removed the engineering bottleneck **Payments:** PayPal, STC Pay, Telr and Apple Pay integrations; Arabic localisation Read the full Aramex SMART story Finvolv LMS (B2B SaaS) **API-first stack:** 83% reduction in time-to-market for new loan products **Revenue:** 3x ARR growth, with 27% QoQ growth **Integrations:** 5 LMS integrations averaging 3 weeks each **Planning:** Introduced quarterly OKR planning and structured client onboarding documentation",
       "metadata": {
         "sourceType": "work",
         "slug": "finvolv",
@@ -185,7 +185,7 @@
     },
     {
       "id": "work:paytm::chunk-1",
-      "text": "It reached ₹15Cr monthly GMV across 7 internal systems, with a statement of work covering 8 use cases and their refund and accounting flows **UPI Autopay:** Standing repayment mandates cut churn by 10% and repayment-related support queries by 4% **Lender platform:** 5 lending partners integrated with automated settlement and daily reconciliation **Revenue data product:** Replaced a manual billing process across 10M+ loans and cut billing cycle time by 65% **TechOps automation:** 40% fewer Postpaid support queries. Excess-payment reversals (20,000+ a month) and refunds (30,000+ a month) now run without an agent **Compliance:** Kept the platform current with RBI digital lending guidelines, NACH rules, data localisation and credit bureau reporting",
+      "text": "It reached ₹15Cr monthly GMV across 7 internal systems, with a statement of work covering 8 use cases and their refund and accounting flows **UPI Autopay:** Standing repayment mandates cut churn by 10% and repayment-related support queries by 4% **Lender platform:** 5 lending partners integrated with automated settlement and daily reconciliation, unlocking ₹1,500Cr in monthly disbursement capacity **Revenue data product:** Replaced a manual billing process across 10M+ loans and cut billing cycle time by 65% **TechOps automation:** 40% fewer Postpaid support queries. Excess-payment reversals (20,000+ a month) and refunds (30,000+ a month) now run without an agent **Compliance:** Kept the platform current with RBI digital lending guidelines, NACH rules, data localisation and credit bureau reporting",
       "metadata": {
         "sourceType": "work",
         "slug": "paytm",
@@ -226,6 +226,105 @@
           "sme",
           "relationship-management"
         ]
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-0",
+      "text": "aramex smart. . ## The problem In 2019 about 86% of e-commerce orders in the Middle East were cash on delivery. That capped the market in three ways: E-tailers lost orders to failed deliveries, when buyers were not home or refused to pay at the door Aramex absorbed the cost of re-delivery and returns Consumers with thin credit files had no way to defer payment, so they paid upfront or put up with the friction at the door The insight Do not build a standalone BNPL that competes for attention. Embed credit in the delivery flow people already trust, use Aramex's delivery history as the underwriting data, and use Aramex's merchant network as distribution. That led to the one design decision everything else followed from: **the loan is created on delivery, not at checkout.** The consumer picks Aramex SMART at checkout, pays nothing, and the loan is born when the courier scans proof of delivery.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-1",
+      "text": "he consumer picks Aramex SMART at checkout, pays nothing, and the loan is born when the courier scans proof of delivery. It mirrors cash on delivery, with structured credit in place of cash. How a purchase works The consumer picks \"Pay Later with Aramex SMART\" at a partner e-tailer's checkout A real-time underwriting engine scores them against 20+ alternate parameters from Aramex delivery history and returns a decision with a personal credit limit in seconds The order is placed and the shipment is created, with no payment Proof of delivery triggers loan creation in the loan management system The repayment window opens, 14 days for Pay Later or the first instalment for Installments The consumer repays through the portal with PayPal, STC Pay, Telr or Apple Pay, depending on the market Six product components **Real-time underwriting engine:** Alternate-data credit decisions without bureau data, which was sparse in the region.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-2",
+      "text": "**Real-time underwriting engine:** Alternate-data credit decisions without bureau data, which was sparse in the region. It lifted approval rates by 45% against conventional scoring in the same segment. Thresholds and limit buckets were tuned with the Risk team as the portfolio matured **Consumer Portal:** Balance, due dates, full, partial and one-click repayment, custom pay-links for targeted collection, store credit and order history.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-3",
+      "text": "A separate mobile-first responsive build followed, with full Arabic right-to-left support **E-tailer widget and plug-ins:** An embeddable checkout widget plus self-service plug-ins for Magento, Shopify and WooCommerce, so non-technical merchants could switch it on with little developer time **Merchant Portal:** Orders, settlements, remittances, returns and self-service onboarding, which gave merchants transparency without a large support team **Leads Portal:** An internal tool that pre-loaded consumers with verified delivery histories before launch, so the product opened with a pre-screened user base instead of a cold start **Landing page:** English and Arabic from day one, with versions for Saudi Arabia and the UAE Four payment products **Pay Later (14-day):** The flagship, launched in Saudi Arabia at go-live in June 2020.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-4",
+      "text": "No interest if repaid on time **Pay in Installments (3x):** Three equal monthly instalments for larger orders, in Saudi Arabia and the UAE **Part Pay:** Pay a portion upfront or at delivery and defer the rest, piloted in the UAE **Prepaid:** A wallet model launched in Nigeria in December 2020, matched to a market where post-delivery credit was harder to run The COVID pivot In March 2020 the launch plan fell apart. It depended on physical merchant events, in-person activation and a broad category launch, and retail had shut.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-5",
+      "text": "The re-plan, executed on schedule: Moved the merchant launch to essential goods such as groceries, pharmacy and household items, where lockdown demand had spiked Switched to fully digital merchant onboarding using the self-service Merchant Portal already in development Made the underwriting engine more conservative on initial limits, with a plan to recalibrate as repayment data arrived Activated consumers by email and digital channels only, through the pre-seeded Leads Portal base Cut launch scope to the minimum live feature set and deferred the rest to the scale phase Aramex SMART went live in June 2020, six months from inception, with two e-tailers and a pre-seeded consumer base. The forced focus turned into a product insight: BNPL demand was strongest in high-frequency, necessity purchases, which shaped merchant priorities afterwards.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-6",
+      "text": "insight: BNPL demand was strongest in high-frequency, necessity purchases, which shaped merchant priorities afterwards.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-7",
+      "text": "Rollout **Jun 2020:** Go-live in Saudi Arabia with 2 e-tailers **Jul to Oct 2020:** 25 e-tailers; PayPal, STC Pay and Apple Pay integrated **Nov 2020:** UAE launch with AED and USD support and the Telr gateway **Dec 2020:** Nigeria launch with the Prepaid model **Dec 2020 to Oct 2021:** Installments shipped, Part Pay piloted, responsive portal and the three e-commerce plug-ins delivered, merchant base growing toward 35+ Lessons **No bureau data meant the alternate-data engine was the plan, not the backup.** Getting the Risk team to trust delivery data as the main signal took pilot data and persistence **Trust was a design problem.** Mirroring the cash-on-delivery moment, with Arabic copy and clear repayment messaging, mattered more than feature depth **Merchant integration was the bottleneck.** The plug-in strategy removed it and made the jump from 2 to 35+ merchants possible **Three markets, one architecture.** Payment and currency logic had to be modular because each country had different rails, currency, regulation and behaviour Role Joined Finvolv in 2019 as Senior Product Manager and was the sole product owner on the Aramex engagement: product vision, flows and wireframes, design reviews and sign-offs with the visual design team, credit engine configuration with Risk, and delivery coordination with Engineering.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
+      }
+    },
+    {
+      "id": "work:aramex-smart::chunk-8",
+      "text": "From December 2021 moved to Lead Product Manager across the wider Finvolv LMS while continuing to oversee the Aramex account.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "aramex-smart",
+        "title": "Aramex SMART",
+        "href": "/work/aramex-smart",
+        "tags": []
       }
     },
     {

@@ -3,7 +3,7 @@ import { getAllCaseStudies, getAllProjects } from '@/lib/content';
 import { SITE_URL } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ['', '/work', '/case-studies', '/projects', '/threads'].map((path) => ({
+  const staticRoutes = ['', '/work', '/work/aramex-smart', '/case-studies', '/projects', '/threads'].map((path) => ({
     url: `${SITE_URL}${path}`,
   }));
 

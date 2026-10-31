@@ -72,7 +72,7 @@ function buildProfileDocument(): RagRawDocument {
     Key metrics include: $200M+ customer portfolio supported at M2P Fintech, 4x YoY loan disbursal growth at Paytm, 40+ institutions on M2P's Core Lending Suite, and $50M+ co-lending volume across 5 enterprise accounts at M2P.
     He has 15+ years of experience spanning Infosys, SBI, AdiFi, Finvolv, Paytm, and M2P.
     Core strengths include lending infrastructure, co-lending partnerships, product strategy and growth, and AI automation.
-    He led the lender integration platform that onboarded 5 lending partners at Paytm, and led the design and rollout of M2P's co-lending module.
+    He led the lender integration platform that onboarded 5 lending partners at Paytm (₹1,500Cr monthly disbursement capacity), and led the design and rollout of M2P's co-lending module.
     He is open to advisory work and select leadership conversations.
     Contact channels include email, LinkedIn, GitHub, and Twitter/X via the website footer.
   `);
@@ -92,6 +92,7 @@ export function loadRagDocuments(): RagRawDocument[] {
   const docs = [
     buildProfileDocument(),
     ...readMdxDocuments('work', 'work'),
+    ...readMdxDocuments('pages', 'work').map((doc) => ({ ...doc, href: `/work/${doc.slug}`, title: 'Aramex SMART' })),
     ...readMdxDocuments('projects', 'project'),
     ...readMdxDocuments('case-studies', 'case-study'),
     ...readMdxDocuments('threads', 'thread'),

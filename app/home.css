@@ -210,3 +210,9 @@
 .oh .skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--ink);color:var(--cream);padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px}
 .oh .skip:focus{top:12px}
 .oh .wk:hover .y,.oh .rrow:hover .y,.oh .wrow:hover .y{color:var(--ink)}
+.oh .astats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin:0 0 56px;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.oh .astats div{padding:22px 18px;border-left:1.5px solid var(--ink)}
+.oh .astats div:first-child{border-left:0;padding-left:0}
+.oh .astats dt{font-family:var(--font-display),sans-serif;font-weight:800;font-size:clamp(26px,3vw,40px);letter-spacing:-.04em;line-height:1}
+.oh .astats dd{margin:8px 0 0;font-size:14px;color:#4a443c}
+@media(max-width:860px){.oh .astats{grid-template-columns:repeat(2,minmax(0,1fr))}.oh .astats div{border-left:0;border-top:1.5px solid var(--ink);padding-left:0}.oh .astats div:first-child,.oh .astats div:nth-child(2){border-top:0}}
