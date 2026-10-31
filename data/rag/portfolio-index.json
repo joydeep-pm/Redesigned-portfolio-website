@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "createdAt": "2026-10-29T10:15:01.217Z",
+  "createdAt": "2026-10-31T21:40:48.354Z",
   "embeddingModel": "keyword-bm25",
   "dimensions": 0,
   "chunks": [
     {
       "id": "profile:joydeep-sarkar::chunk-0",
-      "text": "Joydeep Sarkar is a fintech product leader and lending infrastructure specialist. He builds scalable financial products bridging traditional banking and modern technology. Key metrics include: $200M+ portfolio processed at M2P Fintech, 4x YoY loan disbursal growth at Paytm, 40+ institutions on M2P's Core Lending Suite, and $50M+ co-lending volume across 5 enterprise accounts at M2P. He has 14+ years of experience spanning Infosys, SBI, AdiFi, Finvolv, Paytm, and M2P. Core strengths include lending infrastructure, co-lending partnerships, product strategy and growth, and AI automation. He integrated 5 lending partners securing ₹1500Cr+ monthly disbursal capital at Paytm, and built co-lending at M2P.",
+      "text": "Joydeep Sarkar is a fintech product leader and lending infrastructure specialist. He builds scalable financial products bridging traditional banking and modern technology. Key metrics include: $200M+ customer portfolio supported at M2P Fintech, 4x YoY loan disbursal growth at Paytm, 40+ institutions on M2P's Core Lending Suite, and $50M+ co-lending volume across 5 enterprise accounts at M2P. He has 15+ years of experience spanning Infosys, SBI, AdiFi, Finvolv, Paytm, and M2P. Core strengths include lending infrastructure, co-lending partnerships, product strategy and growth, and AI automation. He led the lender integration platform that onboarded 5 lending partners at Paytm, and led the design and rollout of M2P's co-lending module.",
       "metadata": {
         "sourceType": "profile",
         "slug": "joydeep-sarkar",
@@ -22,7 +22,7 @@
     },
     {
       "id": "profile:joydeep-sarkar::chunk-1",
-      "text": "ion. He integrated 5 lending partners securing ₹1500Cr+ monthly disbursal capital at Paytm, and built co-lending at M2P. He is open to advisory work and select leadership conversations. Contact channels include email, LinkedIn, GitHub, and Twitter/X via the website footer.",
+      "text": "egration platform that onboarded 5 lending partners at Paytm, and led the design and rollout of M2P's co-lending module. He is open to advisory work and select leadership conversations. Contact channels include email, LinkedIn, GitHub, and Twitter/X via the website footer.",
       "metadata": {
         "sourceType": "profile",
         "slug": "joydeep-sarkar",
@@ -53,7 +53,37 @@
     },
     {
       "id": "work:finvolv::chunk-0",
-      "text": "Finvolv. Role: Lead Product Manager. Duration: Nov 2019 – Oct 2022. Metric: 3x ARR revenue growth. Tags: lending, b2b-saas, api-first. Led product development for API-first lending stack across 12+ financial institutions. Key Achievements **API-First Stack:** 83% reduction in time-to-market **Aramex BNPL (KSA):** 0.5mn users, 5mn SAR portfolio **Underwriting Engine:** 45% increase in loan approvals",
+      "text": "Finvolv. Role: Lead Product Manager. Duration: Nov 2019 – Oct 2022. Metric: 3x ARR revenue growth. Tags: lending, b2b-saas, api-first. Joined as Senior Product Manager to build a BNPL product for Aramex, the largest logistics network in MENA. From December 2021, Lead Product Manager for the Finvolv LMS across 12+ financial institutions. Aramex SMART (BNPL, MENA) About 86% of e-commerce orders in the region were cash on delivery. Aramex SMART created the loan on delivery rather than at checkout, so it mirrored the cash-on-delivery habit while adding credit. As sole product owner, led it from inception to go-live in 6 months, through a full COVID-19 re-plan. **Scale:** 500K+ users across Saudi Arabia, the UAE and Nigeria, with a 5mn SAR live portfolio **Underwriting:** A real-time engine built on 20+ alternate parameters from Aramex delivery history, since bureau data was sparse.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "finvolv",
+        "title": "Finvolv",
+        "href": "/work",
+        "tags": [
+          "lending",
+          "b2b-saas",
+          "api-first"
+        ]
+      }
+    },
+    {
+      "id": "work:finvolv::chunk-1",
+      "text": "ting:** A real-time engine built on 20+ alternate parameters from Aramex delivery history, since bureau data was sparse. It lifted approvals by 45% **Four products:** Pay Later (14-day), Pay in Installments (3x) and Prepaid shipped; Part Pay piloted in the UAE **COVID pivot:** The planned launch relied on physical events. Re-planned it around essential-goods e-tailers and digital onboarding, and went live in June 2020 on schedule **Merchant growth:** 2 merchants at launch, 25 within three months, 35+ by the end.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "finvolv",
+        "title": "Finvolv",
+        "href": "/work",
+        "tags": [
+          "lending",
+          "b2b-saas",
+          "api-first"
+        ]
+      }
+    },
+    {
+      "id": "work:finvolv::chunk-2",
+      "text": "Magento, Shopify and WooCommerce plug-ins plus a self-service Merchant Portal removed the engineering bottleneck **Payments:** PayPal, STC Pay, Telr and Apple Pay integrations; Arabic localisation Finvolv LMS (B2B SaaS) **API-first stack:** 83% reduction in time-to-market for new loan products **Revenue:** 3x ARR growth, with 27% QoQ growth **Integrations:** 5 LMS integrations averaging 3 weeks each **Planning:** Introduced quarterly OKR planning and structured client onboarding documentation",
       "metadata": {
         "sourceType": "work",
         "slug": "finvolv",
@@ -95,7 +125,37 @@
     },
     {
       "id": "work:m2p-fintech::chunk-0",
-      "text": "M2P Fintech. Role: Senior Director – Core Lending Suite. Duration: Nov 2024 – Present. Metric: $200M+ portfolio processed. Tags: lending, b2b-saas, infrastructure. Leading product vision and delivery for the Core Lending Suite, managing cross-functional teams of Product Managers and Engineers. Joined as Director in Nov 2024; promoted to Senior Director in Jul 2026. Key Achievements **Co-Lending Orchestration:** Multi-lender module, 5 enterprise accounts, $50M+ loan volume **Loan Against Securities:** Automated valuation engine, $200M+ portfolio, 25% revenue increase **Workflow Automation:** 60% reduction in operational overhead",
+      "text": "M2P Fintech. Role: Senior Director – Core Lending Suite. Duration: Nov 2024 – Present. Metric: $200M+ customer portfolio supported. Tags: lending, b2b-saas, infrastructure. Leading product vision and delivery for the Core Lending Suite on Finflux by M2P: an API-first, modular lending platform for banks, NBFCs and fintechs, covering origination, loan management and collections. Joined as Director in Nov 2024; promoted to Senior Director in Jul 2026. Key Achievements **Co-lending:** Multi-lender module with three simultaneous repayment schedules (customer, NBFC and bank), escrow-routed cashflows and real-time reconciliation.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "m2p-fintech",
+        "title": "M2P Fintech",
+        "href": "/work",
+        "tags": [
+          "lending",
+          "b2b-saas",
+          "infrastructure"
+        ]
+      }
+    },
+    {
+      "id": "work:m2p-fintech::chunk-1",
+      "text": "Live for 5 enterprise accounts with $50M+ loan volume, 90% less reconciliation effort and payout generation down from 3 days to 3 hours **RBI Co-Lending Directions 2025:** Authored \"Decoding Co-Lending 2025\", mapping each clause to a product capability, then shipped the compliance changes: blended-rate recast, escrow, NPA sync between lenders and dual-bureau reporting **Loans against securities:** Mutual funds and shares, with digital pledging through depositories and registrars, an LTV engine, daily shortfall management and Account Aggregator origination.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "m2p-fintech",
+        "title": "M2P Fintech",
+        "href": "/work",
+        "tags": [
+          "lending",
+          "b2b-saas",
+          "infrastructure"
+        ]
+      }
+    },
+    {
+      "id": "work:m2p-fintech::chunk-2",
+      "text": "Supports a $200M+ customer portfolio and a 25% platform revenue increase **Gold loan:** Digital appraisal, LTV by purity, and fraud-prevention controls (appraiser verification, geo-tagged photos, CERSAI registration and duplicate-pledge detection) **Agentic LOS (in development):** AI agents for document collection, verification, credit data, underwriting and offers, with every action logged and exceptions routed to humans **Workflow automation:** 60% less operational overhead through configurable billing, moratorium and DPD/NPA workflows **Other verticals:** LAP, term loans, supply chain finance, education, auto, consumer durables and overdraft, each configured on the platform",
       "metadata": {
         "sourceType": "work",
         "slug": "m2p-fintech",
@@ -110,7 +170,37 @@
     },
     {
       "id": "work:paytm::chunk-0",
-      "text": "Paytm. Role: Director – Product, Lending. Duration: Nov 2022 – Nov 2024. Metric: 4x loan disbursal growth YoY. Tags: lending, consumer, scale. Led product strategy for Paytm's lending vertical, driving significant growth in loan disbursals. Key Achievements **LMS Strategy:** 10.1M active loans served **Partner Integration:** ₹1500Cr+ monthly disbursal via 5 lending partners **Revenue Product:** 65% billing cycle reduction **Subscriptions BNPL:** ₹15Cr monthly GMV",
+      "text": "Paytm. Role: Director – Product, Lending. Duration: Nov 2022 – Nov 2024. Metric: 4x loan disbursal growth YoY. Tags: lending, consumer, scale. Owned the loan management system behind Paytm Postpaid, India's largest BNPL product, across Postpaid, Personal Loan and Merchant Loan. Managed three product managers covering LMS core, subscriptions and TechOps. Key Achievements **Scale:** 10.1M active loans at peak, ₹5,200+ Cr (USD 626Mn) in total loan volume, 4x YoY disbursal growth and 134% YoY loan count growth **Subscriptions BNPL:** Let Postpaid pay for recurring spend such as OTT, utilities and insurance.",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "paytm",
+        "title": "Paytm",
+        "href": "/work",
+        "tags": [
+          "lending",
+          "consumer",
+          "scale"
+        ]
+      }
+    },
+    {
+      "id": "work:paytm::chunk-1",
+      "text": "It reached ₹15Cr monthly GMV across 7 internal systems, with a statement of work covering 8 use cases and their refund and accounting flows **UPI Autopay:** Standing repayment mandates cut churn by 10% and repayment-related support queries by 4% **Lender platform:** 5 lending partners integrated with automated settlement and daily reconciliation **Revenue data product:** Replaced a manual billing process across 10M+ loans and cut billing cycle time by 65% **TechOps automation:** 40% fewer Postpaid support queries. Excess-payment reversals (20,000+ a month) and refunds (30,000+ a month) now run without an agent **Compliance:** Kept the platform current with RBI digital lending guidelines, NACH rules, data localisation and credit bureau reporting",
+      "metadata": {
+        "sourceType": "work",
+        "slug": "paytm",
+        "title": "Paytm",
+        "href": "/work",
+        "tags": [
+          "lending",
+          "consumer",
+          "scale"
+        ]
+      }
+    },
+    {
+      "id": "work:paytm::chunk-2",
+      "text": "Kept the platform current with RBI digital lending guidelines, NACH rules, data localisation and credit bureau reporting",
       "metadata": {
         "sourceType": "work",
         "slug": "paytm",
