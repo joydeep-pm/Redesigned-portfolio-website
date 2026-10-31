@@ -8,8 +8,11 @@ export function SubShell({ children }: { children: ReactNode }) {
   return (
     <div className="oh sub">
       <HomeEffects />
+      <a className="skip" href="#main">
+        Skip to content
+      </a>
       <HomeNav variant="site" />
-      <main>{children}</main>
+      <main id="main">{children}</main>
       <ContactBand />
     </div>
   );

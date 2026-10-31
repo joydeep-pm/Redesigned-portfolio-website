@@ -19,7 +19,7 @@ export default function WorkPage() {
       <PageHero
         eyebrow="Career timeline"
         title={['Proof of ', { mark: 'work' }, '.']}
-        lead="15+ years across banking, lending operations, and fintech product infrastructure."
+        lead="15+ years across engineering, banking, lending operations, and fintech product."
       />
       <section className="psec">
         <div className="wrap">

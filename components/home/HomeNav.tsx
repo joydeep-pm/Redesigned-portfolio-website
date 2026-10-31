@@ -27,10 +27,17 @@ export function HomeNav({ variant = 'home' }: { variant?: 'home' | 'site' }) {
   const solid = variant === 'site' || scrolled;
 
   useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
     const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('keydown', onKey);
+    };
   }, []);
 
   const isActive = (href: string) => variant === 'site' && pathname.startsWith(href);
@@ -61,7 +68,7 @@ export function HomeNav({ variant = 'home' }: { variant?: 'home' | 'site' }) {
           ))}
         </ul>
         <div className="navr">
-          <button type="button" className="menu" aria-expanded={open} onClick={() => setOpen(!open)}>
+          <button type="button" className="menu" aria-expanded={open} aria-controls="mnav" onClick={() => setOpen(!open)}>
             {open ? 'Close' : 'Menu'}
           </button>
           <a className="btn solid" href="mailto:joytdh@gmail.com">
@@ -70,7 +77,7 @@ export function HomeNav({ variant = 'home' }: { variant?: 'home' | 'site' }) {
         </div>
       </div>
       {open && (
-        <div className="mnav">
+        <div className="mnav" id="mnav">
           {variant === 'site' && (
             <Link href="/" onClick={() => setOpen(false)}>
               Home

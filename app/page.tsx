@@ -117,9 +117,12 @@ export default function Home() {
   return (
     <div className="oh" id="top">
       <HomeEffects />
+      <a className="skip" href="#main">
+        Skip to content
+      </a>
       <HomeNav />
 
-      <main>
+      <main id="main">
       <section className="hero">
         <div className="wrap">
           <p className="eyebrow fade" style={{ animationDelay: '.1s' }}>

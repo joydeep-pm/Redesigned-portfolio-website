@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import remarkGfm from 'remark-gfm';
 import { SubShell } from '@/components/site/SubShell';
 
 const mdxComponents = {
@@ -64,7 +65,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <section className="psec" style={{ paddingTop: 70 }}>
         <div className="wrap">
           <div className="prose prose-wrap">
-            <MDXRemote source={caseStudy.content} components={mdxComponents} />
+            <MDXRemote
+              source={caseStudy.content}
+              components={mdxComponents}
+              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            />
           </div>
           <Link href="/case-studies" className="more">
             More teardowns &rarr;
