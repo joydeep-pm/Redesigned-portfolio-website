@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "createdAt": "2026-10-31T21:54:47.747Z",
+  "createdAt": "2026-10-31T21:59:15.694Z",
   "embeddingModel": "keyword-bm25",
   "dimensions": 0,
   "chunks": [
