@@ -2,20 +2,21 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, ExternalLink, FileDown, Linkedin } from 'lucide-react';
 import { CHAT_ENABLED, SAME_AS } from '@/lib/site';
-import { MetricCard, CaseStudyCard } from '@/components';
-import { HeroPortrait } from '@/components/HeroPortrait';
-import { HeroAsk } from '@/components/HeroAsk';
-import { LifecycleStrip } from '@/components/LifecycleStrip';
+import { HomeNav } from '@/components/home/HomeNav';
+import { HomeAsk } from '@/components/home/HomeAsk';
+import { HomeEffects } from '@/components/home/HomeEffects';
+import { Split } from '@/components/home/Split';
 import { getAllCaseStudies, getAllProjects, getAllThreads } from '@/lib/content';
+import './home.css';
 
-const metrics = [
-  { number: '$200M+', label: 'loan against securities portfolio', context: 'M2P Fintech' },
-  { number: '4x', label: 'loan disbursals, year on year', context: 'Paytm' },
-  { number: '15+', label: 'institutions on the platform', context: 'M2P Fintech' },
-  { number: '$50M+', label: 'co-lending volume, 5 enterprise accounts', context: 'M2P Fintech' },
-];
+const numbers = [
+  { prefix: '$', value: 200, suffix: 'M+', label: 'Loan against securities portfolio', context: 'M2P Fintech', viz: null },
+  { prefix: '', value: 40, suffix: '+', label: 'Institutions on the platform', context: 'M2P Fintech', viz: 'squares' },
+  { prefix: '$', value: 50, suffix: 'M+', label: 'Co-lending volume across 5 enterprise accounts', context: 'M2P Fintech', viz: 'dots' },
+  { prefix: '', value: 4, suffix: 'x', label: 'Loan disbursals, year on year', context: 'Paytm', viz: 'bars4' },
+  { prefix: '', value: 3, suffix: 'x', label: 'ARR growth', context: 'Finvolv', viz: 'bars3' },
+] as const;
 
 const jobs = [
   {
@@ -23,27 +24,81 @@ const jobs = [
     company: 'M2P Fintech',
     role: 'Senior Director, Core Lending Suite',
     line: 'Co-lending orchestration and loan against securities on an API-first lending platform.',
-    tone: 'bg-mint',
   },
   {
     years: '2022 to 2024',
     company: 'Paytm',
     role: 'Director, Product, Lending',
-    line: '4x loan disbursals, 500K+ active borrowers and 5 lending partners.',
-    tone: 'bg-pink',
+    line: '4x loan disbursals, 500K+ active borrowers and 5 lending partners. Churn down 10% via TechOps automation and UPI Autopay.',
   },
   {
     years: '2021 to 2022',
     company: 'Finvolv',
     role: 'Lead Product Manager',
-    line: 'An API-first lending stack deployed at 12+ institutions. ARR 3x.',
-    tone: 'bg-sky',
+    line: 'An API-first lending stack deployed at 12+ institutions. ARR 3x. Real-time underwriting engine, approvals up 45%.',
   },
 ];
 
 const FLAGSHIPS = ['voice-journal', 'milestone-perk-tracker'];
+const BUILD_META: Record<string, { kind: string; title: string }> = {
+  'voice-journal': { kind: 'AI product', title: 'Voice Journal' },
+  'milestone-perk-tracker': { kind: 'Fintech app', title: 'Milestone & Perk Tracker' },
+};
+const TEARDOWN_NOTES: Record<string, string> = {
+  'juspay-bnpl': 'A target plan, not reported results.',
+};
 
-const resumeAvailable = fs.existsSync(path.join(process.cwd(), 'public', 'resume.pdf'));
+const resumeHref = fs.existsSync(path.join(process.cwd(), 'public', 'resume.pdf')) ? '/resume.pdf' : SAME_AS[0];
+
+const firstSentences = (text: string, count: number) => {
+  const out = (text.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [text]).slice(0, count).join('').trim();
+  return out.length > 240 && out.includes(';') ? `${out.slice(0, out.indexOf(';'))}.` : out;
+};
+
+const SQUARES =Array.from({ length: 40 }, (_, i) => i);
+
+function Viz({ kind }: { kind: (typeof numbers)[number]['viz'] }) {
+  if (kind === 'squares') {
+    return (
+      <div className="vz sq">
+        {SQUARES.map((i) => (
+          <i key={i} style={{ transitionDelay: `${i * 25}ms` }} />
+        ))}
+      </div>
+    );
+  }
+  if (kind === 'dots') {
+    return (
+      <div className="vz dot">
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
+    );
+  }
+  if (kind === 'bars4') {
+    return (
+      <div className="vz bars">
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
+    );
+  }
+  if (kind === 'bars3') {
+    return (
+      <div className="vz bars bars3">
+        <i />
+        <i />
+        <i />
+      </div>
+    );
+  }
+  return <div />;
+}
 
 export default function Home() {
   const projects = getAllProjects();
@@ -52,159 +107,259 @@ export default function Home() {
   );
   const teardowns = getAllCaseStudies()
     .filter((cs) => cs.featured)
-    .sort((a, b) => String(b.publishedAt).localeCompare(String(a.publishedAt)))
-    .slice(0, 3);
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 4);
   const threads = getAllThreads().slice(0, 2);
 
   return (
-    <div className="max-w-6xl mx-auto px-5">
-      <section className="grid lg:grid-cols-[1.4fr_1fr] gap-10 items-center py-12 md:py-16">
-        <div>
-          <p className="eyebrow mb-4">Senior Director, Core Lending Suite · M2P Fintech</p>
-          <h1 className="page-title text-5xl md:text-7xl">
-            I build the{' '}
-            <mark className="bg-sun rounded-xl px-2 text-ink">lending tech</mark> banks run on.
-          </h1>
-          <p className="mt-6 text-lg md:text-xl max-w-xl text-text-secondary">
-            API-first lending platforms for banks, NBFCs and fintechs: $50M+ co-lending volume, 15+ institutions, and 4x YoY disbursal
-            growth. Based in Bengaluru.
+    <div className="oh" id="top">
+      <HomeEffects />
+      <HomeNav />
+
+      <section className="hero">
+        <div className="wrap">
+          <p className="eyebrow fade" style={{ animationDelay: '.1s' }}>
+            Senior Director, Core Lending Suite &middot; M2P Fintech
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/work" className="pop-btn-solid">
-              See my work <ArrowRight size={16} strokeWidth={2.5} />
-            </Link>
-            <a
-              href={resumeAvailable ? '/resume.pdf' : SAME_AS[0]}
-              {...(resumeAvailable ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-              className="pop-btn"
-            >
-              {resumeAvailable ? (
-                <>
-                  Resume <FileDown size={16} strokeWidth={2.5} />
-                </>
-              ) : (
-                <>
-                  LinkedIn <Linkedin size={16} strokeWidth={2.5} />
-                </>
-              )}
+          <h1>
+            <span className="l">
+              <i style={{ animationDelay: '.2s' }}>Joydeep</i>
+            </span>
+            <span className="l">
+              <i style={{ animationDelay: '.34s' }}>Sarkar.</i>
+            </span>
+          </h1>
+          <p className="role fade" style={{ animationDelay: '.9s' }}>
+            I turn hard problems into <mark>products</mark> that scale.
+          </p>
+          <p className="sub fade" style={{ animationDelay: '1s' }}>
+            Product leader, earlier at Paytm and Finvolv. Bengaluru.
+          </p>
+          <div className="row fade" style={{ animationDelay: '1.1s' }}>
+            <a className="btn solid" href="#numbers">
+              See the numbers <i>&darr;</i>
+            </a>
+            <a className="btn" href={resumeHref}>
+              Resume
             </a>
           </div>
-          {CHAT_ENABLED && <HeroAsk />}
+          {CHAT_ENABLED && <HomeAsk />}
         </div>
-        <HeroPortrait />
+        <div className="cut">
+          <Image src="/images/joydeep-cutout.webp" alt="Joydeep Sarkar" width={720} height={780} priority sizes="(min-width: 900px) 40vw, 86vw" />
+        </div>
       </section>
 
-      <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 pb-4">
-        {metrics.map((m, index) => (
-          <MetricCard key={m.label} number={m.number} label={m.label} context={m.context} index={index} />
-        ))}
+      <section className="slide dark" id="numbers">
+        <div className="wrap">
+          <p className="eyebrow">By the numbers</p>
+          <Split parts={['Products I took to ', { mark: 'scale' }, '.']} lightMark />
+          <div style={{ marginTop: 44 }}>
+            {numbers.map((n) => (
+              <div className="nrow in" key={n.label}>
+                <div className="n" data-p={n.prefix} data-v={n.value} data-s={n.suffix}>
+                  {n.prefix}
+                  {n.value}
+                  <em>{n.suffix}</em>
+                </div>
+                <div className="t">
+                  {n.label}
+                  <small>{n.context}</small>
+                </div>
+                <Viz kind={n.viz} />
+              </div>
+            ))}
+          </div>
+          <div className="tl in">
+            <p className="cap">Career, Dec 2021 to now</p>
+            <div className="tlbar">
+              <div>
+                Finvolv<small>Lead PM</small>
+              </div>
+              <div>
+                Paytm<small>Director, Product, Lending</small>
+              </div>
+              <div>
+                M2P Fintech<small>Senior Director, Core Lending Suite</small>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section className="pt-16">
-        <h2 className="page-title text-4xl md:text-5xl mb-2">Built across the loan lifecycle</h2>
-        <p className="text-text-secondary mb-8 max-w-2xl">Where the work happened, and what it moved.</p>
-        <LifecycleStrip />
-      </section>
-
-      <section className="pt-16">
-        <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
-          <h2 className="page-title text-4xl md:text-5xl">Where I&apos;ve worked</h2>
-          <Link href="/work" className="font-bold underline underline-offset-4 inline-flex items-center gap-1">
-            Full timeline <ArrowRight size={16} strokeWidth={2.5} />
+      <section className="slide paper" id="work">
+        <div className="wrap">
+          <p className="eyebrow">Work</p>
+          <Split parts={['Where it ', { mark: 'happened' }, '.']} />
+          <div style={{ marginTop: 44 }}>
+            {jobs.map((job) => (
+              <div className="rrow in" key={job.company}>
+                <span className="y">{job.years}</span>
+                <h3>
+                  {job.company}
+                  <small>{job.role}</small>
+                </h3>
+                <p>{job.line}</p>
+              </div>
+            ))}
+          </div>
+          <Link href="/work" className="more">
+            Full timeline &rarr;
           </Link>
-        </div>
-        <div className="grid md:grid-cols-3 gap-5">
-          {jobs.map((job) => (
-            <Link
-              key={job.company}
-              href="/work"
-              className={`block pop-card p-6 ${job.tone} transition-transform duration-150 hover:-translate-y-1`}
-            >
-              <span className="eyebrow">{job.years}</span>
-              <h3 className="font-display text-2xl font-extrabold tracking-tight mt-2">{job.company}</h3>
-              <p className="text-sm font-bold mt-1">{job.role}</p>
-              <p className="mt-3">{job.line}</p>
-            </Link>
-          ))}
         </div>
       </section>
 
       {builds.length > 0 && (
-        <section className="pt-16">
-          <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
-            <h2 className="page-title text-4xl md:text-5xl">Things I made</h2>
-            <Link href="/projects" className="font-bold underline underline-offset-4 inline-flex items-center gap-1">
-              All builds <ArrowRight size={16} strokeWidth={2.5} />
+        <section className="slide sunbg" id="builds">
+          <div className="wrap">
+            <p className="eyebrow">Builds</p>
+            <Split parts={['Things I built ', { mark: 'myself' }, '.']} />
+            <div className="bgrid">
+              {builds.map((p) => {
+                const meta = BUILD_META[p.slug] ?? { kind: 'Project', title: p.title };
+                return (
+                  <article className="bcard in" key={p.slug} data-cursor="Open">
+                    <div className="bimg">
+                      {p.thumbnail && (
+                        <Image src={p.thumbnail} alt={meta.title} fill sizes="(min-width: 860px) 560px, 100vw" />
+                      )}
+                    </div>
+                    <div className="bbody">
+                      <span className="k">{meta.kind}</span>
+                      <h3>{meta.title}</h3>
+                      <p>{p.description}</p>
+                      {p.learned && (
+                        <p className="lrn">
+                          <b>What I learned</b>
+                          {firstSentences(p.learned, 2)}
+                        </p>
+                      )}
+                      <div className="chips">
+                        {p.tech.slice(0, 5).map((t) => (
+                          <span key={t}>{t}</span>
+                        ))}
+                      </div>
+                      {(p.demoUrl || p.repoUrl) && (
+                        <div className="links">
+                          {p.demoUrl && (
+                            <a href={p.demoUrl} target="_blank" rel="noopener noreferrer">
+                              Live site
+                            </a>
+                          )}
+                          {p.repoUrl && (
+                            <a href={p.repoUrl} target="_blank" rel="noopener noreferrer">
+                              Code
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+            <Link href="/projects" className="more">
+              All builds &rarr;
             </Link>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {builds.map((p) => (
-              <Link
-                key={p.slug}
-                href="/projects"
-                className="block pop-card overflow-hidden transition-transform duration-150 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[16/9] bg-cream border-b-[3px] border-ink">
-                  {p.thumbnail && (
-                    <Image src={p.thumbnail} alt={p.title} fill sizes="(min-width: 768px) 560px, 100vw" className="object-contain" />
-                  )}
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl font-extrabold tracking-tight">{p.title}</h3>
-                  <p className="mt-2 text-text-secondary">{p.description}</p>
-                </div>
-              </Link>
-            ))}
           </div>
         </section>
       )}
 
       {teardowns.length > 0 && (
-        <section className="pt-16">
-          <div className="flex items-end justify-between flex-wrap gap-3 mb-8">
-            <h2 className="page-title text-4xl md:text-5xl">Product teardowns</h2>
-            <Link href="/case-studies" className="font-bold underline underline-offset-4 inline-flex items-center gap-1">
-              All teardowns <ArrowRight size={16} strokeWidth={2.5} />
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {teardowns.map((cs) => (
-              <CaseStudyCard
-                key={cs.slug}
-                slug={cs.slug}
-                title={cs.title}
-                company={cs.company}
-                problem={cs.problem}
-                tags={cs.tags}
-                gradient={cs.gradient}
+        <section className="hs dark" id="teardowns">
+          <div className="stick">
+            <div className="wrap" style={{ width: '100%' }}>
+              <p className="eyebrow">Independent product teardowns</p>
+              <Split
+                parts={['How I think about ', { mark: "other people's" }, ' products.']}
+                style={{ fontSize: 'clamp(34px,5vw,72px)' }}
+                lightMark
               />
-            ))}
+            </div>
+            <div className="track" id="track">
+              {teardowns.map((cs, i) => (
+                <Link
+                  key={cs.slug}
+                  href={`/case-studies/${cs.slug}`}
+                  className={`tcard${i === 1 ? ' sun' : ''}`}
+                  data-cursor="Open"
+                >
+                  <span className="no">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="co">{cs.company}</span>
+                  <h3>{cs.title}</h3>
+                  <p>
+                    {cs.problem}.{TEARDOWN_NOTES[cs.slug] ? ` ${TEARDOWN_NOTES[cs.slug]}` : ''}
+                  </p>
+                  <div className="chips">
+                    {cs.tags.slice(0, 3).map((t) => (
+                      <span key={t}>{t}</span>
+                    ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
       )}
 
       {threads.length > 0 && (
-        <section className="pt-16">
-          <h2 className="page-title text-4xl md:text-5xl mb-8">Things I wrote</h2>
-          <div className="grid md:grid-cols-2 gap-5">
-            {threads.map((t) => (
-              <a
-                key={t.slug}
-                href={t.externalUrl || '/threads'}
-                {...(t.externalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="block rounded-lg border-[3px] border-dashed border-ink bg-white p-6 transition-colors duration-150 hover:bg-sun"
-              >
-                <h3 className="font-display text-xl font-extrabold tracking-tight">{t.title}</h3>
-                <p className="mt-2 text-sm text-text-secondary inline-flex items-center gap-2">
-                  {new Date(t.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                  {t.readingTime ? ` · ${t.readingTime} min` : ''}
-                  {t.externalUrl && <ExternalLink size={14} strokeWidth={2.5} />}
-                </p>
-              </a>
-            ))}
+        <section className="slide paper2" id="writing">
+          <div className="wrap">
+            <p className="eyebrow">Writing</p>
+            <Split parts={['Notes I ', { mark: 'published' }, '.']} />
+            <div style={{ marginTop: 44 }}>
+              {threads.map((t) => (
+                <a
+                  key={t.slug}
+                  className="wrow in"
+                  data-cursor="Read"
+                  href={t.externalUrl || '/threads'}
+                  {...(t.externalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span className="y">
+                    {new Date(t.publishedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })}
+                    {t.readingTime ? ` · ${t.readingTime} min` : ''}
+                  </span>
+                  <h3>{t.title}</h3>
+                  <p>{t.excerpt}</p>
+                  <i>↗</i>
+                </a>
+              ))}
+            </div>
+            <Link href="/threads" className="more">
+              All writing &rarr;
+            </Link>
           </div>
         </section>
       )}
+
+      <section className="slide cta dark" id="contact">
+        <div className="wrap">
+          <p className="eyebrow">Contact</p>
+          <Split className="" parts={['Have a product worth ', { mark: 'building' }, '?']} lightMark />
+          <div className="row">
+            <a className="btn" href="mailto:joytdh@gmail.com">
+              Email me
+            </a>
+            <a className="btn" href={SAME_AS[0]} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a className="btn" href={SAME_AS[1]} target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
+            <a className="btn" href="https://x.com/joytdh" target="_blank" rel="noopener noreferrer">
+              X
+            </a>
+            <a className="btn" href={resumeHref}>
+              Resume
+            </a>
+          </div>
+          <div className="foot">
+            <span>&copy; {new Date().getFullYear()} Joydeep Sarkar</span>
+            <span>Bengaluru, India</span>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

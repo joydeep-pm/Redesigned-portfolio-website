@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import { Nav } from '@/components/Nav';
-import { Footer } from '@/components/Footer';
+import { SiteChrome } from '@/components/SiteChrome';
 import { PortfolioChatWidget } from '@/components/PortfolioChatWidget';
 import { Bricolage_Grotesque, DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
@@ -48,9 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c') }}
         />
-        <Nav />
-        <main className="pt-20">{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
         {CHAT_ENABLED && <PortfolioChatWidget />}
         <Analytics />
       </body>
