@@ -1,7 +1,8 @@
 import { getAllThreads } from '@/lib/content';
-import { ExternalLink, Clock } from 'lucide-react';
 import type { Metadata } from 'next';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
+import { SubShell } from '@/components/site/SubShell';
+import { PageHero } from '@/components/site/PageHero';
 
 export const metadata: Metadata = {
   title: 'Threads',
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function ThreadsPage() {
-  const threads = getAllThreads();
+  const threads = getAllThreads().sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -30,72 +31,49 @@ export default function ThreadsPage() {
   };
 
   return (
-    <>
+    <SubShell>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
-      <section className="max-w-6xl mx-auto px-5 pt-12 pb-4">
-        <p className="eyebrow mb-3">Writing</p>
-        <h1 className="page-title text-5xl md:text-7xl mb-4">Things I wrote</h1>
-        <p className="text-lg md:text-xl max-w-3xl text-text-secondary">Thoughts on product strategy, fintech regulation, and technical learnings.</p>
-      </section>
-
-      <section className="px-5 py-8">
-        <div className="max-w-4xl mx-auto">
+      <PageHero
+        eyebrow="Writing"
+        title={['Notes I ', { mark: 'published' }, '.']}
+        lead="Thoughts on product strategy, fintech regulation, and technical learnings."
+      />
+      <section className="psec">
+        <div className="wrap">
           {threads.length === 0 ? (
-            <div className="pop-card p-10 text-center">
-              <p className="text-lg text-text-secondary mb-2">I&apos;m preparing new pieces on digital lending regulation and co-lending orchestration.</p>
-              <p className="text-text-muted">More writing will be published soon.</p>
+            <div className="empty">
+              <p>I&apos;m preparing new pieces on digital lending regulation and co-lending orchestration. More writing will be published soon.</p>
             </div>
           ) : (
-            <div className="space-y-5">
+            <div>
               {threads.map((thread) => (
-                <article key={thread.slug} className="pop-card p-7 transition-transform duration-150 hover:-translate-y-1">
-                  <div className="flex gap-2 mb-4 flex-wrap">
-                    {thread.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-3 py-1 bg-bg-muted text-text-muted rounded-full uppercase tracking-wider font-semibold"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 className="text-2xl font-extrabold tracking-tight text-text-primary mb-2">{thread.title}</h2>
-                  {thread.excerpt && <p className="text-text-secondary mb-4 leading-relaxed">{thread.excerpt}</p>}
-                  <div className="flex items-center justify-between gap-4 flex-wrap">
-                    <div className="flex items-center gap-4 text-xs text-text-muted uppercase tracking-wider font-semibold">
-                      <span>
-                        {new Date(thread.publishedAt).toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        })}
-                      </span>
-                      {thread.readingTime && (
-                        <span className="inline-flex items-center gap-1">
-                          <Clock size={14} strokeWidth={2.5} /> {thread.readingTime} min
-                        </span>
-                      )}
-                    </div>
-                    {thread.externalUrl && (
-                      <a
-                        href={thread.externalUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="h-11 px-4 rounded-md bg-accent-primary text-white hover:bg-sun hover:text-ink transition-all duration-200 hover:scale-105 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider"
-                      >
-                        Read on LinkedIn <ExternalLink size={14} strokeWidth={2.5} />
-                      </a>
-                    )}
-                  </div>
-                </article>
+                <a
+                  key={thread.slug}
+                  className="wrow in"
+                  data-cursor="Read"
+                  href={thread.externalUrl || '/threads'}
+                  {...(thread.externalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span className="y">
+                    {new Date(thread.publishedAt).toLocaleDateString('en-US', {
+                      month: 'short',
+                      year: 'numeric',
+                      timeZone: 'UTC',
+                    })}
+                    {thread.readingTime ? ` · ${thread.readingTime} min` : ''}
+                  </span>
+                  <h3>{thread.title}</h3>
+                  <p>{thread.excerpt}</p>
+                  <i>↗</i>
+                </a>
               ))}
             </div>
           )}
         </div>
       </section>
-    </>
+    </SubShell>
   );
 }

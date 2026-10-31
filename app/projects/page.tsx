@@ -2,18 +2,13 @@ import { getAllProjects } from '@/lib/content';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { SubShell } from '@/components/site/SubShell';
+import { PageHero } from '@/components/site/PageHero';
 
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'Side projects and experiments in AI and fintech tooling.',
   alternates: { canonical: '/projects' },
-};
-
-const statusTone: Record<string, string> = {
-  active: 'bg-mint border-2 border-ink text-ink',
-  completed: 'bg-sky border-2 border-ink text-ink',
-  experimental: 'bg-sun border-2 border-ink text-ink',
-  archived: 'bg-white border-2 border-ink text-ink',
 };
 
 const FLAGSHIP_SLUGS = ['voice-journal', 'milestone-perk-tracker'];
@@ -38,59 +33,55 @@ export default function ProjectsPage() {
   const projects = all.filter((p) => !FLAGSHIP_SLUGS.includes(p.slug));
 
   return (
-    <>
-      <section className="max-w-6xl mx-auto px-5 pt-12 pb-4">
-        <p className="eyebrow mb-3">Selected builds</p>
-        <h1 className="page-title text-5xl md:text-7xl mb-4">Things I made</h1>
-        <p className="text-lg md:text-xl max-w-3xl text-text-secondary">Product and engineering experiments across AI, developer tooling, and consumer UX.</p>
-      </section>
+    <SubShell>
+      <PageHero
+        eyebrow="Selected builds"
+        title={['Things I built ', { mark: 'myself' }, '.']}
+        lead="Product and engineering experiments across AI, developer tooling, and consumer UX."
+      />
 
       {flagships.length > 0 && (
-        <section className="px-5 py-8">
-          <div className="max-w-7xl mx-auto">
-            <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">Flagship builds</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-8">Two things I built end to end</h2>
-            <div className="grid lg:grid-cols-2 gap-8">
+        <section className="psec tight">
+          <div className="wrap">
+            <p className="sublabel" style={{ marginTop: 0 }}>
+              Flagship builds
+            </p>
+            <div className="bgrid" style={{ marginTop: 18 }}>
               {flagships.map((project) => (
-                <article key={project.slug} className="rounded-lg bg-bg-muted p-6">
-                  <div className="relative mb-6 rounded-lg overflow-hidden bg-white aspect-[16/10]">
+                <article className="bcard in" key={project.slug} data-cursor="Open">
+                  <div className="bimg">
                     {project.thumbnail && (
                       <Image
                         src={project.thumbnail}
                         alt={project.title}
                         fill
-                        sizes="(min-width: 1024px) 560px, 100vw"
-                        className="object-contain"
+                        sizes="(min-width: 860px) 560px, 100vw"
                         priority
                       />
                     )}
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-text-primary mb-3">{project.title}</h3>
-                  <p className="text-text-secondary mb-4">{project.description}</p>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">Why I built it</p>
-                  <p className="text-text-secondary leading-relaxed mb-5">{problemSummary(project.content)}</p>
-                  {project.learned && (
-                    <>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-accent-primary mb-2">What I learned</p>
-                      <p className="text-text-secondary leading-relaxed mb-5">{project.learned}</p>
-                    </>
-                  )}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.slice(0, 5).map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-xs px-3 py-1 rounded-full bg-white text-text-muted uppercase tracking-wider font-semibold"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="bbody">
+                    <span className="k">Why I built it</span>
+                    <h3>
+                      <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+                    </h3>
+                    <p>{project.description}</p>
+                    <p>{problemSummary(project.content)}</p>
+                    {project.learned && (
+                      <p className="lrn">
+                        <b>What I learned</b>
+                        {project.learned}
+                      </p>
+                    )}
+                    <div className="chips">
+                      {project.tech.slice(0, 5).map((tech) => (
+                        <span key={tech}>{tech}</span>
+                      ))}
+                    </div>
+                    <Link href={`/projects/${project.slug}`} className="go">
+                      Read the build &rarr;
+                    </Link>
                   </div>
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    className="h-12 px-5 rounded-md bg-accent-primary text-white hover:bg-sun hover:text-ink transition-all duration-200 hover:scale-105 inline-flex items-center text-xs font-semibold uppercase tracking-wider"
-                  >
-                    Read the build
-                  </Link>
                 </article>
               ))}
             </div>
@@ -98,66 +89,49 @@ export default function ProjectsPage() {
         </section>
       )}
 
-      <section className="px-5 py-8">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-6">More builds</p>
-        </div>
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <article key={project.slug} className="pop-card p-5 transition-transform duration-150 hover:-translate-y-1">
-              <div className="relative mb-5 rounded-lg overflow-hidden bg-bg-muted aspect-[16/10]">
-                {project.thumbnail ? (
-                  <Image
-                    src={project.thumbnail}
-                    alt={project.title}
-                    fill
-                    className="object-contain"
-                    priority={index < 2}
-                  />
-                ) : (
-                  <div className="absolute inset-0 grid grid-cols-2 gap-3 p-4">
-                    <div className="rounded-md bg-white" />
-                    <div className="rounded-md bg-sky" />
-                    <div className="rounded-md bg-mint" />
-                    <div className="rounded-md bg-sun" />
+      <section className="psec">
+        <div className="wrap">
+          <p className="sublabel" style={{ marginTop: 0 }}>
+            More builds
+          </p>
+          <div className="bgrid" style={{ marginTop: 18 }}>
+            {projects.map((project, index) => (
+              <article className="bcard in" key={project.slug} data-cursor="Open">
+                <div className={`bimg${project.thumbnail ? '' : ' ph'}`}>
+                  {project.thumbnail ? (
+                    <Image
+                      src={project.thumbnail}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 860px) 560px, 100vw"
+                      priority={index < 2}
+                    />
+                  ) : (
+                    project.title
+                  )}
+                </div>
+                <div className="bbody">
+                  <div className="bhead">
+                    <h3>
+                      <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+                    </h3>
+                    <span className="status">{project.status}</span>
                   </div>
-                )}
-              </div>
-
-              <div className="flex items-center justify-between gap-4 mb-3">
-                <h2 className="text-2xl font-extrabold tracking-tight text-text-primary">{project.title}</h2>
-                <span
-                  className={`text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold ${
-                    statusTone[project.status] || 'bg-white border-2 border-ink text-ink'
-                  }`}
-                >
-                  {project.status}
-                </span>
-              </div>
-
-              <p className="text-text-secondary leading-relaxed mb-4">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.tech.slice(0, 4).map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-3 py-1 rounded-full bg-bg-muted text-text-muted uppercase tracking-wider font-semibold"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <Link
-                href={`/projects/${project.slug}`}
-                className="h-12 px-5 rounded-md border-4 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-white transition-all duration-200 hover:scale-105 inline-flex items-center text-xs font-semibold uppercase tracking-wider"
-              >
-                View Project
-              </Link>
-            </article>
-          ))}
+                  <p>{project.description}</p>
+                  <div className="chips">
+                    {project.tech.slice(0, 4).map((tech) => (
+                      <span key={tech}>{tech}</span>
+                    ))}
+                  </div>
+                  <Link href={`/projects/${project.slug}`} className="go">
+                    View project &rarr;
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
-    </>
+    </SubShell>
   );
 }

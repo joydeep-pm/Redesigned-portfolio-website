@@ -1,28 +1,29 @@
 import Link from 'next/link';
+import { SubShell } from '@/components/site/SubShell';
 
 export default function NotFound() {
   return (
-    <section className="px-6 py-24 md:py-32">
-      <div className="max-w-2xl mx-auto text-center">
-        <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">404</p>
-        <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-text-primary mb-4">
-          That page does not exist
-        </h1>
-        <p className="text-lg text-text-secondary mb-8">
-          It may have moved. Try the case studies or projects instead.
-        </p>
-        <div className="flex gap-4 justify-center flex-wrap">
-          <Link href="/" className="text-accent-primary font-semibold hover:underline">
-            Home
-          </Link>
-          <Link href="/case-studies" className="text-accent-primary font-semibold hover:underline">
-            Case studies
-          </Link>
-          <Link href="/projects" className="text-accent-primary font-semibold hover:underline">
-            Projects
-          </Link>
+    <SubShell>
+      <section className="nf">
+        <div className="wrap">
+          <p className="eyebrow">Page not found</p>
+          <h1>
+            4<mark>0</mark>4.
+          </h1>
+          <p>That page does not exist. It may have moved. Try the teardowns or builds instead.</p>
+          <div className="row">
+            <Link className="btn solid" href="/">
+              Home <i>&rarr;</i>
+            </Link>
+            <Link className="btn" href="/case-studies">
+              Teardowns
+            </Link>
+            <Link className="btn" href="/projects">
+              Builds
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </SubShell>
   );
 }

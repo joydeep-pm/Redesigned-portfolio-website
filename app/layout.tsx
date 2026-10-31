@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { SiteChrome } from '@/components/SiteChrome';
 import { PortfolioChatWidget } from '@/components/PortfolioChatWidget';
 import { Bricolage_Grotesque, DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
@@ -47,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd).replace(/</g, '\\u003c') }}
         />
-        <SiteChrome>{children}</SiteChrome>
+        {children}
         {CHAT_ENABLED && <PortfolioChatWidget />}
         <Analytics />
       </body>
