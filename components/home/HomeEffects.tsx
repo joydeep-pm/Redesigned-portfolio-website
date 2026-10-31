@@ -84,6 +84,19 @@ export function HomeEffects() {
       const p = total > 0 ? Math.max(0, Math.min(1, -r.top / total)) : 0;
       trk.style.transform = `translateX(${-p * Number(hs.dataset.dist || 0)}px)`;
     };
+    const onFocusCard = (e: FocusEvent) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.tcard');
+      if (!card || !hs || !trk || window.innerWidth <= 900) return;
+      const stick = hs.querySelector<HTMLElement>('.stick');
+      if (stick) stick.scrollLeft = 0;
+      const dist = Number(hs.dataset.dist || 0);
+      const total = hs.offsetHeight - window.innerHeight;
+      const target = Math.max(0, Math.min(dist, card.offsetLeft - 24));
+      window.scrollTo({ top: hs.offsetTop + (dist > 0 ? (target / dist) * total : 0), behavior: 'instant' });
+    };
+    trk?.addEventListener('focusin', onFocusCard);
+    cleanups.push(() => trk?.removeEventListener('focusin', onFocusCard));
+
     const onResize = () => {
       hsSize();
       hsMove();

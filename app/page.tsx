@@ -29,7 +29,7 @@ const jobs = [
     years: '2022 to 2024',
     company: 'Paytm',
     role: 'Director, Product, Lending',
-    line: '4x loan disbursals, 10.1M active loans and 5 lending partners. Churn down 10% via TechOps automation and UPI Autopay.',
+    line: '4x loan disbursals, 10.1M active loans and 5 lending partners. UPI Autopay cut churn 10%.',
   },
   {
     years: '2021 to 2022',
@@ -109,7 +109,9 @@ export default function Home() {
     .filter((cs) => cs.featured)
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
     .slice(0, 4);
-  const threads = getAllThreads().slice(0, 2);
+  const threads = getAllThreads()
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 2);
 
   return (
     <div className="oh" id="top">
@@ -171,7 +173,7 @@ export default function Home() {
             ))}
           </div>
           <div className="tl in">
-            <p className="cap">Career, Dec 2021 to now</p>
+            <p className="cap">Last three roles, Dec 2021 to now</p>
             <div className="tlbar">
               <div>
                 Finvolv<small>Lead PM</small>
