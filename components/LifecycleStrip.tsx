@@ -19,7 +19,7 @@ const stages = [
   },
   {
     stage: 'Servicing',
-    proof: 'UPI Autopay cut churn 10%, 500K+ active borrowers served',
+    proof: 'UPI Autopay cut churn 10%, 10.1M active loans served',
     where: 'Paytm',
     tone: 'bg-sky',
   },

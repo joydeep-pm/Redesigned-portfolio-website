@@ -29,7 +29,7 @@ const jobs = [
     years: '2022 to 2024',
     company: 'Paytm',
     role: 'Director, Product, Lending',
-    line: '4x loan disbursals, 500K+ active borrowers and 5 lending partners. Churn down 10% via TechOps automation and UPI Autopay.',
+    line: '4x loan disbursals, 10.1M active loans and 5 lending partners. Churn down 10% via TechOps automation and UPI Autopay.',
   },
   {
     years: '2021 to 2022',
