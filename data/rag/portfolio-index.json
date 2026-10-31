@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "createdAt": "2026-10-31T21:49:51.998Z",
+  "createdAt": "2026-10-31T21:54:47.747Z",
   "embeddingModel": "keyword-bm25",
   "dimensions": 0,
   "chunks": [
@@ -263,7 +263,7 @@
     },
     {
       "id": "work:aramex-smart::chunk-3",
-      "text": "A separate mobile-first responsive build followed, with full Arabic right-to-left support **E-tailer widget and plug-ins:** An embeddable checkout widget plus self-service plug-ins for Magento, Shopify and WooCommerce, so non-technical merchants could switch it on with little developer time **Merchant Portal:** Orders, settlements, remittances, returns and self-service onboarding, which gave merchants transparency without a large support team **Leads Portal:** An internal tool that pre-loaded consumers with verified delivery histories before launch, so the product opened with a pre-screened user base instead of a cold start **Landing page:** English and Arabic from day one, with versions for Saudi Arabia and the UAE Four payment products **Pay Later (14-day):** The flagship, launched in Saudi Arabia at go-live in June 2020.",
+      "text": "A separate mobile-first responsive build followed, with full Arabic right-to-left support **E-tailer widget and plug-ins:** An embeddable checkout widget plus self-service plug-ins for Magento, Shopify and WooCommerce, so non-technical merchants could switch it on with little developer time **Merchant Portal:** Orders, settlements, remittances, returns and self-service onboarding, which gave merchants transparency without a large support team **Leads Portal:** An internal tool that pre-loaded consumers with verified delivery histories before launch, so the product opened with a pre-screened user base instead of a cold start **Landing page:** English and Arabic from day one, with versions for Saudi Arabia and the UAE Signed-off screens Selected designs from the signed-off set.",
       "metadata": {
         "sourceType": "work",
         "slug": "aramex-smart",
@@ -274,7 +274,7 @@
     },
     {
       "id": "work:aramex-smart::chunk-4",
-      "text": "No interest if repaid on time **Pay in Installments (3x):** Three equal monthly instalments for larger orders, in Saudi Arabia and the UAE **Part Pay:** Pay a portion upfront or at delivery and defer the rest, piloted in the UAE **Prepaid:** A wallet model launched in Nigeria in December 2020, matched to a market where post-delivery credit was harder to run The COVID pivot In March 2020 the launch plan fell apart. It depended on physical merchant events, in-person activation and a broad category launch, and retail had shut.",
+      "text": "Names, amounts and retailers are sample data. *Consumer landing page, English and Arabic from day one.* *Consumer Portal dashboard: due payments, account summary and available limit.* *Pay several shipments in one go, with auto or manual allocation.* *Payment history.* Four payment products **Pay Later (14-day):** The flagship, launched in Saudi Arabia at go-live in June 2020. No interest if repaid on time **Pay in Installments (3x):** Three equal monthly instalments for larger orders, in Saudi Arabia and the UAE **Part Pay:** Pay a portion upfront or at delivery and defer the rest, piloted in the UAE **Prepaid:** A wallet model launched in Nigeria in December 2020, matched to a market where post-delivery credit was harder to run The COVID pivot In March 2020 the launch plan fell apart.",
       "metadata": {
         "sourceType": "work",
         "slug": "aramex-smart",
@@ -285,7 +285,7 @@
     },
     {
       "id": "work:aramex-smart::chunk-5",
-      "text": "The re-plan, executed on schedule: Moved the merchant launch to essential goods such as groceries, pharmacy and household items, where lockdown demand had spiked Switched to fully digital merchant onboarding using the self-service Merchant Portal already in development Made the underwriting engine more conservative on initial limits, with a plan to recalibrate as repayment data arrived Activated consumers by email and digital channels only, through the pre-seeded Leads Portal base Cut launch scope to the minimum live feature set and deferred the rest to the scale phase Aramex SMART went live in June 2020, six months from inception, with two e-tailers and a pre-seeded consumer base. The forced focus turned into a product insight: BNPL demand was strongest in high-frequency, necessity purchases, which shaped merchant priorities afterwards.",
+      "text": "tched to a market where post-delivery credit was harder to run The COVID pivot In March 2020 the launch plan fell apart. It depended on physical merchant events, in-person activation and a broad category launch, and retail had shut. The re-plan, executed on schedule: Moved the merchant launch to essential goods such as groceries, pharmacy and household items, where lockdown demand had spiked Switched to fully digital merchant onboarding using the self-service Merchant Portal already in development Made the underwriting engine more conservative on initial limits, with a plan to recalibrate as repayment data arrived Activated consumers by email and digital channels only, through the pre-seeded Leads Portal base Cut launch scope to the minimum live feature set and deferred the rest to the scale phase Aramex SMART went live in June 2020, six months from inception, with two e-tailers and a pre-seeded consumer base.",
       "metadata": {
         "sourceType": "work",
         "slug": "aramex-smart",
@@ -296,7 +296,7 @@
     },
     {
       "id": "work:aramex-smart::chunk-6",
-      "text": "insight: BNPL demand was strongest in high-frequency, necessity purchases, which shaped merchant priorities afterwards.",
+      "text": "phase Aramex SMART went live in June 2020, six months from inception, with two e-tailers and a pre-seeded consumer base. The forced focus turned into a product insight: BNPL demand was strongest in high-frequency, necessity purchases, which shaped merchant priorities afterwards.",
       "metadata": {
         "sourceType": "work",
         "slug": "aramex-smart",
