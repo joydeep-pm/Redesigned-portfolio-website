@@ -279,7 +279,6 @@ export default function Home() {
               <p className="eyebrow">Independent product teardowns</p>
               <Split
                 parts={['How I think about ', { mark: "other people's" }, ' products.']}
-                style={{ fontSize: 'clamp(34px,5vw,72px)' }}
                 lightMark
               />
             </div>
