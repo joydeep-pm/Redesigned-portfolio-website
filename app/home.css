@@ -136,7 +136,8 @@
 .oh.ready .split.on .w>span{transform:none}
 .oh.ready .in{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .oh.ready .in.on{opacity:1;transform:none}
-@media(min-width:900px) and (min-height:720px){.oh .hero{position:sticky;top:0}}
+@media(min-width:900px) and (min-height:720px){.oh .hero{position:sticky;top:0}.oh .slide{position:sticky;min-height:100vh;box-shadow:0 -22px 50px -24px #1D1A1659}}
+.oh .cta{position:relative}
 @media(prefers-reduced-motion:reduce){.oh .l>i,.oh .fade,.oh .cut{animation:none;transform:none;opacity:1}.oh.ready .in{opacity:1;transform:none}.oh.ready .split .w>span{transform:none}}
 
 .oh .navr{display:flex;align-items:center;gap:10px}

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import type { MouseEvent } from 'react';
 
 const homeLinks = [
   { href: '#numbers', label: 'Numbers' },
@@ -40,6 +41,25 @@ export function HomeNav({ variant = 'home' }: { variant?: 'home' | 'site' }) {
     };
   }, []);
 
+  const jump = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    const target = document.querySelector<HTMLElement>(href);
+    const main = document.getElementById('main');
+    const stacked =
+      window.matchMedia('(min-width:900px) and (min-height:720px)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!target || !main || !stacked || !target.classList.contains('slide')) return;
+    e.preventDefault();
+    let y = main.getBoundingClientRect().top + window.scrollY;
+    for (const c of Array.from(main.children) as HTMLElement[]) {
+      const cs = getComputedStyle(c);
+      y += parseFloat(cs.marginTop) || 0;
+      if (c === target) break;
+      y += c.offsetHeight + (parseFloat(cs.marginBottom) || 0);
+    }
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    history.replaceState(null, '', href);
+  };
+
   const isActive = (href: string) => variant === 'site' && pathname.startsWith(href);
 
   return (
@@ -58,7 +78,9 @@ export function HomeNav({ variant = 'home' }: { variant?: 'home' | 'site' }) {
           {links.map((l) => (
             <li key={l.href}>
               {variant === 'home' ? (
-                <a href={l.href}>{l.label}</a>
+                <a href={l.href} onClick={(e) => jump(e, l.href)}>
+                  {l.label}
+                </a>
               ) : (
                 <Link href={l.href} className={isActive(l.href) ? 'act' : undefined}>
                   {l.label}
@@ -85,7 +107,14 @@ export function HomeNav({ variant = 'home' }: { variant?: 'home' | 'site' }) {
           )}
           {links.map((l) =>
             variant === 'home' ? (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => {
+                  setOpen(false);
+                  jump(e, l.href);
+                }}
+              >
                 {l.label}
               </a>
             ) : (

@@ -120,6 +120,28 @@ export function HomeEffects() {
       if (trk) trk.style.transform = '';
     });
 
+    const stackMq = window.matchMedia('(min-width:900px) and (min-height:720px)');
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('main > .slide:not(.cta)'));
+    const stackSize = () => {
+      slides.forEach((el) => {
+        if (reduce || !stackMq.matches) el.style.removeProperty('top');
+        else el.style.top = `${window.innerHeight - el.offsetHeight}px`;
+      });
+    };
+    if (slides.length) {
+      const sro = new ResizeObserver(stackSize);
+      slides.forEach((el) => sro.observe(el));
+      window.addEventListener('resize', stackSize);
+      stackMq.addEventListener('change', stackSize);
+      stackSize();
+      cleanups.push(() => {
+        sro.disconnect();
+        window.removeEventListener('resize', stackSize);
+        stackMq.removeEventListener('change', stackSize);
+        slides.forEach((el) => el.style.removeProperty('top'));
+      });
+    }
+
     if (window.matchMedia('(pointer:fine)').matches && !reduce) {
       root.classList.add('cur');
       let x = 0;
